@@ -1,197 +1,1193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trapped and Suffering: Prison System Report</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <style>
         :root {
-            --bg: #ffffff; --text: #111111; --accent: #8b1a1a; --accent-light: #c0392b;
-            --muted: #555555; --rule: #cccccc; --gray-bg: #f4f4f4;
+            --bg: #ffffff;
+            --text: #111111;
+            --accent: #8b1a1a;
+            --accent-light: #c0392b;
+            --muted: #555555;
+            --rule: #cccccc;
+            --gray-bg: #f4f4f4;
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'DM Sans', 'Helvetica Neue', sans-serif;
             --intro-bg: #0d0b09;
         }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-serif); background: var(--bg); color: var(--text); line-height: 1.85; overflow-x: hidden; }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.85;
+            overflow-x: hidden;
+        }
 
         /* INTRO */
         #intro-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--intro-bg); z-index: 2000;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1); transition-delay: 0.9s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--intro-bg);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1);
+            transition-delay: 0.9s;
         }
-        .intro-eyebrow { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 6px; text-transform: uppercase; color: var(--accent-light); margin-bottom: 18px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s; }
-        .intro-title { color: #fff; font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; transform: translateY(110%); animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s; }
-        .loader-track { width: 220px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 28px; overflow: hidden; }
-        .loader-bar { width: 0; height: 100%; background: var(--accent-light); animation: grow 1.6s ease forwards 0.2s; }
-        @keyframes slideUp { to { transform: translateY(0); } }
-        @keyframes fadeUp  { to { opacity: 1; } }
-        @keyframes grow    { to { width: 100%; } }
-        .loaded #intro-overlay { transform: translateY(-100%); }
+
+        .intro-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 18px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.3s;
+        }
+
+        .intro-title {
+            color: #fff;
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transform: translateY(110%);
+            animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+        }
+
+        .loader-track {
+            width: 220px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 28px;
+            overflow: hidden;
+        }
+
+        .loader-bar {
+            width: 0;
+            height: 100%;
+            background: var(--accent-light);
+            animation: grow 1.6s ease forwards 0.2s;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes grow {
+            to {
+                width: 100%;
+            }
+        }
+
+        .loaded #intro-overlay {
+            transform: translateY(-100%);
+        }
 
         /* NAVIGATION */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); padding: 15px; z-index: 1000; border-bottom: 1px solid var(--rule); display: flex; justify-content: center; gap: 20px; font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-        nav a { text-decoration: none; color: var(--text); font-weight: 600; transition: color 0.3s; }
-        nav a:hover { color: var(--accent); }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 15px;
+            z-index: 1000;
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
 
         /* HERO */
-        .hero { height: 100vh; background: #0d0b09; display: flex; align-items: flex-end; justify-content: flex-start; position: relative; overflow: hidden; color: white; padding: 0 0 80px 8vw; }
-        .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1541447271487-09612b3f49f7?q=80&w=2000'); background-size: cover; background-position: center; opacity: 0.5; filter: grayscale(50%); }
-        .hero-text { position: relative; z-index: 10; max-width: 820px; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 18px; }
-        .byline { font-family: var(--font-sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); border-top: 1px solid rgba(255,255,255,0.18); padding-top: 16px; }
+        .hero {
+            height: 100vh;
+            background: #0d0b09;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 0 0 80px 8vw;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1541447271487-09612b3f49f7?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            filter: grayscale(50%);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 10;
+            max-width: 820px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .byline {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            padding-top: 16px;
+        }
 
         /* CONTENT */
-        .main-content { width: 100%; max-width: 760px; margin: 0 auto; padding: 120px 24px 60px; }
-        .chapter-label { font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); font-weight: 600; display: block; margin-top: 80px; margin-bottom: 10px; }
-        h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 30px; }
-        h3 { font-size: 1.4rem; margin: 40px 0 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
-        p { font-size: 1.15rem; margin-bottom: 26px; text-align: justify; }
-        blockquote { border-left: 3px solid var(--accent); margin: 40px 0; padding: 20px 30px; background: var(--gray-bg); font-style: italic; }
-        
-        /* TABLES & STATS */
-        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 40px 0; }
-        .stat-card { background: #111; color: white; padding: 25px; border-radius: 4px; }
-        .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--accent-light); display: block; }
-        .table-block { margin: 50px 0; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.85rem; }
-        th { background: #111; color: #fff; padding: 12px; text-align: left; }
-        td { padding: 12px; border-bottom: 1px solid var(--rule); }
-        tr:nth-child(even) td { background: var(--gray-bg); }
+        .main-content {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 120px 24px 60px;
+        }
 
-        #bibliography { background: var(--gray-bg); padding: 80px 24px; margin-top: 100px; }
-        .bib-entry { font-family: var(--font-sans); font-size: 0.9rem; margin-bottom: 15px; padding-left: 2em; text-indent: -2em; }
+        .chapter-label {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-top: 80px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 40px 0 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 22px;
+            text-align: justify;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            margin: 40px 0;
+            padding: 20px 30px;
+            background: var(--gray-bg);
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin: 0 0 24px 1.5rem;
+        }
+
+        ul li {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        /* STATS */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: #111;
+            color: white;
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-light);
+            display: block;
+            font-family: var(--font-sans);
+        }
+
+        .stat-label {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 6px;
+        }
+
+        /* TABLES */
+        .table-block {
+            margin: 50px 0;
+            overflow-x: auto;
+        }
+
+        .table-block h3 {
+            border-left: none;
+            padding-left: 0;
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            font-style: italic;
+            color: var(--muted);
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .table-block .table-title {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+        }
+
+        th {
+            background: #111;
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        tr:nth-child(even) td {
+            background: var(--gray-bg);
+        }
+
+        /* CHARTS */
+        .chart-block {
+            margin: 50px 0;
+        }
+
+        .chart-block .chart-title {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .chart-block .chart-caption {
+            font-family: var(--font-sans);
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .chart-block canvas {
+            max-width: 100%;
+        }
+
+        .chart-source {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* CASE STUDY BOX */
+        .case-box {
+            border: 1px solid var(--rule);
+            padding: 28px 32px;
+            margin: 40px 0;
+            background: #fafafa;
+        }
+
+        .case-box .case-label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .case-box h4 {
+            font-size: 1.25rem;
+            margin-bottom: 14px;
+        }
+
+        .case-box p {
+            font-size: 0.97rem;
+            margin-bottom: 12px;
+        }
+
+        /* PULL QUOTE */
+        .pull-quote {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--accent);
+            border-top: 3px solid var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding: 28px 0;
+            margin: 50px 0;
+            font-style: italic;
+        }
+
+        /* BIBLIOGRAPHY */
+        #bibliography {
+            background: var(--gray-bg);
+            padding: 80px 24px;
+            margin-top: 100px;
+        }
+
+        .bib-entry {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+            padding-left: 2em;
+            text-indent: -2em;
+            line-height: 1.6;
+        }
+
+        /* DIVIDER */
+        .section-rule {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 60px 0;
+        }
     </style>
 </head>
+
 <body>
 
-<div id="intro-overlay">
-    <span class="intro-eyebrow">PBL Research Report</span>
-    <div class="intro-title">Trapped and Suffering</div>
-    <div class="loader-track"><div class="loader-bar"></div></div>
-</div>
-
-<nav>
-    <a href="#intro">Background</a>
-    <a href="#overcrowding">Overcrowding</a>
-    <a href="#healthcare">Healthcare</a>
-    <a href="#violence">Violence</a>
-    <a href="#mental-health">Mental Health</a>
-    <a href="#rehabilitation">Rehabilitation</a>
-</nav>
-
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-text">
-        <h1>Trapped and Suffering: How America's Prison System Causes Physical and Mental Suffering </h1>
-        <div class="byline">Alexander Phouangmalay, Avaneesh Singh, Jayden Nguyen, Yash Shah [cite: 2]</div>
-    </div>
-</section>
-
-<article class="main-content">
-    <section id="intro">
-        <span class="chapter-label">01 · Background</span>
-        <h2>Introduction</h2>
-        <p>America is known to have one of the greatest legal systems in the world[cite: 4]. Some qualities of this justice system include its strict enforcement, affordability, and multiple chances, making it "orderly and fair"[cite: 5]. Despite these secure qualities, how it performs is essentially flawed because of what incarcerated people deal with inside the prison system[cite: 6].</p>
-    </section>
-
-    <section id="overcrowding">
-        <span class="chapter-label">02 · Overcrowding</span>
-        <h2>Overcrowding and Neglect [cite: 7]</h2>
-        <p>With over 2 million people in the US prison system at any given time, there have been many instances where prisoners are often crammed into small, claustrophobic cells, faced harsh heat and cold without proper ventilation and climate control, deal with unsanitary and disgusting food and sanitary conditions, and are deprived of access to educational, social, and legal services (Sawyer et al., 2026; Western, 2021)[cite: 8]. The conditions of overcrowding and ineffective services and facilities can lead to prisoners' loss of humanity and dignity, which can lead to an increase in mental illness, violence, assaults, and suicide (Western, 2021; Hopwood, 2021)[cite: 9].</p>
-        
-        <div class="stat-row">
-            <div class="stat-card">
-                <span class="stat-number">2M+</span>
-                <p>Nationwide confinement [cite: 14]</p>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">119%</span>
-                <p>Iowa's operational capacity (2019) [cite: 88]</p>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">13%</span>
-                <p>Deaths in Texas prisons attributed to heat [cite: 102]</p>
-            </div>
+    <div id="intro-overlay">
+        <span class="intro-eyebrow">PBL Research Report</span>
+        <div class="intro-title">Trapped and Suffering</div>
+        <div class="loader-track">
+            <div class="loader-bar"></div>
         </div>
+    </div>
 
-        <p>As of 2019, Iowa leads the nation in prison overcrowding, with its prison population at 119% of its operational capacity (the number of prisoners a prison can accommodate) (Spohn & Kiper, 2025)[cite: 88]. Over 10 states have reached or exceeded their operational capacity, with prison capacity exceeding design capacity, leaving insufficient physical space to house all prisoners (Spohn & Kiper, 2025)[cite: 89].</p>
+    <nav>
+        <a href="#intro">Background</a>
+        <a href="#overcrowding">Overcrowding</a>
+        <a href="#healthcare">Healthcare</a>
+        <a href="#violence">Violence</a>
+        <a href="#mental-health">Mental Health</a>
+        <a href="#rehabilitation">Rehabilitation</a>
+        <a href="#bibliography">Bibliography</a>
+    </nav>
 
-        <div class="table-block">
-            <h3>Table 1: The Top 10 States for Overcrowded Prisons [cite: 93, 94]</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>State</th><th>Population</th><th>Rated Capacity</th><th>Operational Capacity</th><th>Design Capacity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Iowa [cite: 95]</td><td>8,438</td><td>119.00%</td><td>119.00%</td><td>119.00%</td></tr>
-                    <tr><td>Nebraska [cite: 95]</td><td>5,546</td><td>No Data</td><td>115.40%</td><td>156.90%</td></tr>
-                    <tr><td>Idaho [cite: 95]</td><td>8,422</td><td>No Data</td><td>110.10%</td><td>No Data</td></tr>
-                    <tr><td>Colorado [cite: 95]</td><td>15,689</td><td>No Data</td><td>106.80%</td><td>119.40%</td></tr>
-                    <tr><td>Georgia [cite: 95]</td><td>54,620</td><td>91.60%</td><td>105.40%</td><td>No Data</td></tr>
-                    <tr><td>Washington [cite: 95]</td><td>17,882</td><td>No Data</td><td>105.30%</td><td>No Data</td></tr>
-                    <tr><td>Montana [cite: 95]</td><td>1,985</td><td>98.70%</td><td>102.60%</td><td>173.80%</td></tr>
-                    <tr><td>Wisconsin [cite: 95]</td><td>23,402</td><td>No Data</td><td>101.00%</td><td>137.80%</td></tr>
-                    <tr><td>Hawaii [cite: 95]</td><td>3,550</td><td>101.80%</td><td>100.70%</td><td>100.70%</td></tr>
-                </tbody>
-            </table>
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-text">
+            <h1>Trapped and Suffering: How America's Prison System Causes Physical and Mental Suffering</h1>
+            <div class="byline">Alexander Phouangmalay · Avaneesh Singh · Jayden Nguyen · Yash Shah</div>
         </div>
     </section>
 
-    <section id="healthcare">
-        <span class="chapter-label">03 · Healthcare</span>
-        <h2>Healthcare [cite: 117]</h2>
-        <p>Healthcare is designed to improve the "health and well-being of individuals and communities, including preventive, diagnostic, therapeutic, rehabilitative, maintenance, monitoring, and counseling services"[cite: 118, 119]. However, this is not the case for incarcerated individuals who lie in prison facilities[cite: 119]. Many prisoners requiring medical attention were often ignored and left to die after being glanced at by the time it's too late[cite: 119]. The staff's ignorance or lack of care for the prisoners' health leads to unnecessary suffering and can be seen as more inhumane than the death penalty itself[cite: 119].</p>
-        
-        <h3>Specific Case Notes:</h3>
-        <ul>
-            <li>Little boy that was raped in JM [cite: 126]</li>
-            <li>Wheel chair guy that couldnt get out JM [cite: 127]</li>
-        </ul>
+    <article class="main-content">
+
+        <!-- INTRODUCTION -->
+        <section id="intro">
+            <span class="chapter-label">01 · Background</span>
+            <h2>Introduction</h2>
+            <p>America is known to have one of the greatest legal systems in the world. Some qualities of this justice
+                system include its strict enforcement, affordability, and multiple chances, making it "orderly and
+                fair." Despite these secure qualities, how it performs is essentially flawed because of what
+                incarcerated people deal with inside the prison system.</p>
+
+            <!-- Figure 1: Prison Population Chart -->
+            <div class="chart-block">
+                <div class="chart-title">Figure 1</div>
+                <div class="chart-caption">Current US Prison Population and Distributions (Prison Policy Initiative,
+                    2026)</div>
+                <canvas id="prisonPopChart" height="180"></canvas>
+                <p class="chart-source">Source: Prison Policy Initiative — Mass Incarceration: The Whole Pie 2026
+                    (www.prisonpolicy.org/reports/pie2026.html)</p>
+            </div>
+
+            <p>As one of the largest prison systems in the world that has billions invested, most inmates are often
+                worse off than those who are homeless or living in poverty.</p>
+        </section>
+
+        <hr class="section-rule">
+
+        <!-- OVERCROWDING -->
+        <section id="overcrowding">
+            <span class="chapter-label">02 · Overcrowding &amp; Neglect</span>
+            <h2>Overcrowding and Neglect</h2>
+            <p>With over 2 million people in the US prison system at any given time, there have been many instances
+                where prisoners are often crammed into small, claustrophobic cells, faced harsh heat and cold without
+                proper ventilation and climate control, deal with unsanitary and disgusting food and sanitary
+                conditions, and are deprived of access to educational, social, and legal services (Sawyer et al., 2026;
+                Western, 2021). The conditions of overcrowding and ineffective services and facilities can lead to
+                prisoners' loss of humanity and dignity, which can lead to an increase in mental illness, violence,
+                assaults, and suicide (Western, 2021; Hopwood, 2021).</p>
+
+            <div class="stat-row">
+                <div class="stat-card">
+                    <span class="stat-number">2M+</span>
+                    <p class="stat-label">Incarcerated nationwide at any given time</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">119%</span>
+                    <p class="stat-label">Iowa's operational capacity — highest in the nation (2019)</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">13%</span>
+                    <p class="stat-label">Deaths in Texas prisons attributed to heat during summer months</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">150%</span>
+                    <p class="stat-label">California prisons' overcrowding rate in 2009 — nearly 1 suicide per week</p>
+                </div>
+            </div>
+
+            <p>Overcrowding in prisons has been a persistent issue for almost 20 years, and continues to be a problem
+                even today. As of 2019, Iowa leads the nation in prison overcrowding, with its prison population at 119%
+                of its operational capacity — the number of prisoners a prison can accommodate (Spohn &amp; Kiper,
+                2025). Over 10 states have reached or exceeded their operational capacity, with prison capacity
+                exceeding design capacity, leaving insufficient physical space to house all prisoners (Spohn &amp;
+                Kiper, 2025).</p>
+
+            <p>With such overcrowding, this increases tension and stress in the prison community, leading to violent
+                actions and deterioration (Spohn &amp; Kiper, 2025; Western, 2021). One important example was in 2009,
+                when most California prisons were overcrowded at 150% of their designed capacity; most prisoners were in
+                disarray, with hundreds of cases of violence, extreme health risks, and as then-Governor Arnold
+                Schwarzenegger reported, the suicide rate in 29 severely overcrowded prisons was approaching an average
+                of one per week (Western, 2021).</p>
+
+            <div class="table-block">
+                <div class="table-title">Table 1</div>
+                <h3>The Top 10 States for Overcrowded Prisons (Spohn &amp; Kiper, 2025)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>Prison Population</th>
+                            <th>Rated Capacity</th>
+                            <th>Operational Capacity</th>
+                            <th>Design Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Iowa</td>
+                            <td>8,438</td>
+                            <td>119.00%</td>
+                            <td>119.00%</td>
+                            <td>119.00%</td>
+                        </tr>
+                        <tr>
+                            <td>Nebraska</td>
+                            <td>5,546</td>
+                            <td>No Data</td>
+                            <td>115.40%</td>
+                            <td>156.90%</td>
+                        </tr>
+                        <tr>
+                            <td>Idaho</td>
+                            <td>8,422</td>
+                            <td>No Data</td>
+                            <td>110.10%</td>
+                            <td>No Data</td>
+                        </tr>
+                        <tr>
+                            <td>Colorado</td>
+                            <td>15,689</td>
+                            <td>No Data</td>
+                            <td>106.80%</td>
+                            <td>119.40%</td>
+                        </tr>
+                        <tr>
+                            <td>Georgia</td>
+                            <td>54,620</td>
+                            <td>91.60%</td>
+                            <td>105.40%</td>
+                            <td>No Data</td>
+                        </tr>
+                        <tr>
+                            <td>Washington</td>
+                            <td>17,882</td>
+                            <td>No Data</td>
+                            <td>105.30%</td>
+                            <td>No Data</td>
+                        </tr>
+                        <tr>
+                            <td>Montana</td>
+                            <td>1,985</td>
+                            <td>98.70%</td>
+                            <td>102.60%</td>
+                            <td>173.80%</td>
+                        </tr>
+                        <tr>
+                            <td>Wisconsin</td>
+                            <td>23,402</td>
+                            <td>No Data</td>
+                            <td>101.00%</td>
+                            <td>137.80%</td>
+                        </tr>
+                        <tr>
+                            <td>Hawaii</td>
+                            <td>3,550</td>
+                            <td>101.80%</td>
+                            <td>100.70%</td>
+                            <td>100.70%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Overcrowding bar chart -->
+            <div class="chart-block">
+                <div class="chart-title">Figure 1b</div>
+                <div class="chart-caption">Operational Capacity by State — Top Overcrowded Prisons (2019)</div>
+                <canvas id="overcrowdingChart" height="200"></canvas>
+                <p class="chart-source">Source: Spohn &amp; Kiper (2025). State Prison Overcrowding and Capacity Data.
+                    University of Nebraska Omaha.</p>
+            </div>
+
+            <h3>Facility Conditions: Heat, Sanitation, and Services</h3>
+            <p>With most prisons operating beyond their capacity, this has led to more issues with facilities and
+                services provided to prisoners. Prisoners are often guaranteed certain privileges, such as their own
+                beds, bathrooms, food, and educational, social, and legal services (Western, 2021). This is to ensure
+                the prisoners can be reintegrated and rehabilitated into normal society after their release. However,
+                with prisons at almost full or exceeding capacity, these services often break down and fail, leading to
+                issues of unsanitary conditions, neglect, and non-compliance with prisoners.</p>
+
+            <p>One such issue is heat, which is more evident in southern states such as Alabama, Texas, and Georgia.
+                Often, prison climate systems fail without warning, resulting in extremely sweltering conditions
+                reaching 103–110°F for weeks on end (Kaufman et al., 2025). With understaffed facilities, poor
+                conditions, and legal and political obstacles, systems at these prisons do not get repaired, leading to
+                increased violence, heat stroke, dehydration, and even deaths — which accounted for almost 13% of all
+                deaths in Texas prisons during summer months (Kaufman et al., 2025; Hopwood, 2021).</p>
+
+            <p>If heat and climate are not the issue, then lavatories, food, and prisoners' services are other points of
+                failure. Often, correctional facilities have very unsanitary conditions in lavatories and food
+                preparation areas, creating a risk of bacterial contamination and illness (Western, 2021; CT Office of
+                Correction Ombuds, 2026). According to a report from the Connecticut Office of the Correction Ombuds,
+                there is extensive damage to showers and bathrooms in most state prisons, and a lack of basic cleaning
+                and hygiene supplies (2026). Additionally, there is a worrying amount of structural and facility damage,
+                with mold, rust, and corrosion present at most facilities, raising concerns about injury and illness
+                from mold, fiberglass, and rust (CT Office of Correction Ombuds, 2026).</p>
+
+            <p>Besides physical conditions, social, legal, and educational services are often nonexistent or in poor
+                condition in prisons. Reports show that many services, such as libraries and phones, are often
+                restricted or inoperable, with officials citing repairs or budget cuts (CT Office of Correction Ombuds,
+                2026). Without these services, people are unable to communicate with family and friends, furthering
+                distress and isolation among prisoners. State legal assistance organizations that help poor and
+                disadvantaged prisoners with legal work, parole, and other services are also critically important, yet
+                these services are often understaffed and underfunded, leaving many prisoners turned away or neglected
+                when seeking legal help (CT Office of Correction Ombuds, 2026).</p>
+
+            <div class="pull-quote">"Prisons are turning from a place of rehabilitation and redemption to more of a
+                breeding ground for sickness, violence, and death."</div>
+
+            <p>With unsuitable, dangerous conditions in prisons, combined with mass incarceration and now immigration
+                detentions, the consequences for prisoners continue to compound. The Department of Justice has already
+                cut about $819.7 million in grants for federal rehabilitation and education resources, and in Florida,
+                the governor has cut at least $840 million from the correctional budget for construction and repairs
+                (Solomon &amp; Pear, 2025; Joseph-Marc, 2025). Without any sort of reforms or policies to repair,
+                oversee, and accommodate the growing prisoner population, the consequences will surely increase.</p>
+        </section>
+
+        <hr class="section-rule">
+
+        <!-- HEALTHCARE -->
+        <section id="healthcare">
+            <span class="chapter-label">03 · Healthcare</span>
+            <h2>Healthcare</h2>
+            <p>Healthcare is designed to improve the "health and well-being of individuals and communities, including
+                preventive, diagnostic, therapeutic, rehabilitative, maintenance, monitoring, and counseling services."
+                However, this is not the case for incarcerated individuals in prison facilities. Many prisoners
+                requiring medical attention were often ignored and left to die after being glanced at — or only seen
+                when it was too late. The staff's ignorance or lack of care for the prisoners' health leads to
+                unnecessary suffering and can be seen as more inhumane than the death penalty itself.</p>
+
+            <p>In order for prisons to adequately improve the health of prisoners, improvements must be made to
+                doctor-patient relationships, care attention, regulations ensuring prisoners' comfort, and the needs of
+                those with medical conditions. Illinois courts define the doctor-patient relationship as "a consensual
+                relationship in which the patient knowingly seeks the physician's assistance and in which the physician
+                knowingly accepts the person as a patient." This foundational trust is frequently absent in correctional
+                settings.</p>
+
+            <h3>Prison Work Conditions and Medical Neglect</h3>
+            <p>Prison work conditions are especially harsh. Inmates have almost no labor rights and are paid very little
+                — if they are paid at all — yet are required to perform grueling work. Critically, correctional
+                facilities frequently fail to make adequate accommodations for individuals with special medical needs or
+                physical disabilities. This lack of precaution places vulnerable populations at heightened risk of
+                injury and deterioration.</p>
+
+            <div class="case-box">
+                <span class="case-label">Case Study · Healthcare Failure</span>
+                <h4>Elliot Earl Williams: Death by Deliberate Indifference</h4>
+                <p>The case of prisoner Elliot Earl Williams illustrates extreme medical neglect. Despite suffering a
+                    serious neurosurgical condition, Williams received inadequate diagnosis and treatment over a
+                    prolonged period. Scholars who examined his case characterized the institutional response as
+                    constituting "neglect, recklessness, and deliberate indifference in the face of a serious
+                    neurosurgical pathology" (Spence et al., 2025). His death highlighted how systemic failures in
+                    prison healthcare can transform a treatable condition into a fatal one.</p>
+            </div>
+
+            <div class="case-box">
+                <span class="case-label">Case Study · Youth Vulnerability</span>
+                <h4>Children in Adult Prisons</h4>
+                <p>Children placed in adult correctional facilities face compounded dangers. Research from the Equal
+                    Justice Initiative (2017) documents that youth in adult prisons are at dramatically elevated risk of
+                    physical and sexual abuse. In one documented instance from a juvenile detention facility, a young
+                    boy was subjected to sexual assault — an event that underscores the catastrophic failure of duty of
+                    care for the most vulnerable populations in the system. The EJI has long argued that all children
+                    are children, and the justice system must reflect that fundamental truth (Equal Justice Initiative,
+                    2017).</p>
+            </div>
+
+            <div class="case-box">
+                <span class="case-label">Case Study · Disability Access</span>
+                <h4>Wheelchair Accessibility and ADA Failures</h4>
+                <p>Individuals with physical disabilities face particular dangers in facilities not equipped to
+                    accommodate them. Reports from juvenile and adult facilities document instances where individuals
+                    using wheelchairs were unable to access exits, bathrooms, or emergency routes — placing them in
+                    life-threatening situations during routine institutional operations. The failure to provide basic
+                    ADA-compliant accommodations violates both federal law and basic standards of human dignity.</p>
+            </div>
+
+            <p>The Marshall Project documented cases of prisoners dying of treatable conditions — including cancer —
+                after being denied timely or adequate medical care (Marcus &amp; Canning, 2025; Lartey, 2025). In many
+                cases, inmates who flagged symptoms repeatedly were dismissed or undertreated until their conditions
+                became terminal. These outcomes reflect a system where cost-cutting consistently overrides
+                constitutional obligations to provide basic medical care.</p>
+        </section>
+
+        <hr class="section-rule">
+
+        <!-- VIOLENCE -->
+        <section id="violence">
+            <span class="chapter-label">04 · Violence &amp; Safety</span>
+            <h2>Violence and Safety</h2>
+            <p>Within prisons, the welfare of incarcerated individuals is routinely compromised by endemic violence —
+                both from other inmates and from correctional staff. Overcrowded, understaffed facilities create
+                conditions in which violence is not an aberration but a predictable outcome.</p>
+
+            <p>Alabama's prisons have been documented as the deadliest in the nation, with homicide rates far exceeding
+                national averages for correctional facilities (Equal Justice Initiative, 2018). Witnessing violence —
+                even without being a direct victim — causes lasting psychological trauma. A Prison Policy Initiative
+                report (2020) found that exposure to violence in prison creates a form of trauma equivalent to combat
+                exposure, with long-term consequences for mental health and behavior post-release.</p>
+
+            <div class="case-box">
+                <span class="case-label">Case Study · Staff Violence</span>
+                <h4>Karl Taylor: Death After Guard Assault</h4>
+                <p>Karl Taylor was an inmate who was first struck in the head by a prison guard. The abuse escalated to
+                    the point where he could not breathe during an altercation. He subsequently died. All three of the
+                    state correctional department, state police, and the local district attorney concluded that his
+                    death was caused by his declining health — despite the documented physical assault (Robbins, 2018).
+                    Taylor had schizophrenia and an additional disorder at the time, illustrating how mentally ill
+                    prisoners are especially vulnerable to staff violence while simultaneously being denied
+                    accountability for their deaths.</p>
+            </div>
+
+            <p>A 2025 federal report documented widespread abuse in federal prisons, including prisoners being shackled
+                for days and weeks at a time — a practice condemned as a form of torture under international human
+                rights standards (Shapiro, 2025). The Prison Policy Initiative (2025) has also documented how prison
+                disciplinary policies themselves manufacture misconduct, creating cycles of punishment that escalate
+                rather than de-escalate violence.</p>
+
+            <h3>Solitary Confinement</h3>
+            <p>Solitary confinement — isolation in a small cell for 22–24 hours per day — is widely used as a
+                disciplinary tool but has devastating health consequences. Research documents that solitary confinement
+                causes severe physical health impacts, including cardiovascular deterioration, weakened immune function,
+                and heightened injury risk (Strong et al., 2020). The psychological effects are equally severe,
+                including anxiety, paranoia, hallucinations, and an inability to regulate emotions (Hill, 2022). Studies
+                confirm that individuals subjected to solitary confinement report dramatically reduced wellbeing, with
+                effects persisting long after release (Wright et al., 2023).</p>
+        </section>
+
+        <hr class="section-rule">
+
+        <!-- MENTAL HEALTH -->
+        <section id="mental-health">
+            <span class="chapter-label">05 · Mental Health &amp; Suicide</span>
+            <h2>Mental Health and Suicide</h2>
+            <p>The welfare of prisoners should remain one of the top priorities of the prison system and its guards, as
+                their wellbeing depends heavily on the care they receive. The correctional system has consistently
+                failed to provide adequate mental health support, often substituting temporary interventions for genuine
+                treatment.</p>
+
+            <div class="case-box">
+                <span class="case-label">Case Study · Suicide Watch Failure</span>
+                <h4>John Rudd: Dismissed and Abandoned</h4>
+                <p>One such instance is seen with John Rudd. Despite making multiple suicidal claims and taking
+                    self-harming actions — including banging his head on the wall and attempting to snap his own neck —
+                    he was simply injected with an antipsychotic drug and was told that he "wasn't ill enough to require
+                    regular treatment" (Thompson et al., 2018). He was later removed from suicide watch, and his mental
+                    health was not being properly monitored. Instead of focusing on the underlying problem, the
+                    correctional system opted for temporary solutions — a pattern that proved tragically insufficient.
+                </p>
+            </div>
+
+            <div class="case-box">
+                <span class="case-label">Case Study · Mental Illness and Guard Violence</span>
+                <h4>Karl Taylor: Schizophrenia and Accountability</h4>
+                <p>Another case is with Karl Taylor, an inmate who had schizophrenia and an additional mental health
+                    disorder. He was first struck in the head by a prison guard; the abuse escalated to the point where
+                    he lost the ability to breathe during an altercation. He later died. State authorities attributed
+                    his death to declining health rather than the assault — a conclusion that illustrates the profound
+                    lack of accountability in cases involving mentally ill inmates who are also victims of staff
+                    violence (Robbins, 2018).</p>
+            </div>
+
+            <!-- Mental Health Treatment Chart (Figure 2) -->
+            <div class="chart-block">
+                <div class="chart-title">Figure 2</div>
+                <div class="chart-caption">Mental Illness Treatment for Federal Prisoners — Impact of Policy Change
+                    (Thompson et al., 2018)</div>
+                <canvas id="mentalHealthChart" height="160"></canvas>
+                <p class="chart-source">Source: Federal Bureau of Prisons. A policy change in 2014 led to a roughly 35%
+                    decrease in mental illness treatment for federal prisoners, from approximately 7,700 to 4,710 by
+                    2018.</p>
+            </div>
+
+            <p>As seen in the graph above, a policy change in 2014 played a direct role in the decline of mental illness
+                treatment for federal prisoners — a 35% decrease (Thompson et al., 2018). These cases and events
+                highlight the negligence and failure of the prison system to adequately monitor and care for its
+                inmates' mental wellbeing.</p>
+
+            <p>Beyond individual cases, systemic data confirms the crisis. Nearly a fifth of state and federal prisons
+                and a tenth of local jails had at least one suicide in 2019 (Watkins, 2021). Chronic untreated mental
+                illness, isolation, loss of autonomy, and exposure to violence create conditions under which suicide
+                becomes an all-too-common outcome.</p>
+
+            <h3>Chronic Mental Health Needs Go Unmet</h3>
+            <p>A 2022 Prison Policy Initiative report on chronic punishment found that the mental and physical health
+                needs of people in state prisons are drastically unmet (Wang, 2022). People enter prison with higher
+                rates of mental illness than the general population, yet correctional healthcare systems are
+                consistently underfunded and understaffed. Rather than providing treatment, the prison environment
+                frequently worsens pre-existing conditions and generates new ones through trauma, isolation, and
+                neglect.</p>
+        </section>
+
+        <hr class="section-rule">
+
+        <!-- REHABILITATION -->
+        <section id="rehabilitation">
+            <span class="chapter-label">06 · Rehabilitation</span>
+            <h2>Rehabilitation</h2>
+            <p>Over the past few years, there have been multiple scenarios where prison conditions were the reason
+                behind transforming the outlook of incarcerated individuals for the worse. There were even cases where
+                innocent victims who were wrongfully convicted were influenced after release to commit a crime due to
+                mental pressures. In fact, recent reports over the years show high risks of mortality, elevated
+                depression levels, worsened mood levels, and disorders being more prominent among formerly incarcerated
+                individuals (Columbia Justice Lab, 2024).</p>
+
+            <p>In new cases, empirical evidence suggests that even court-ordered releases that deem the convicted person
+                "stable" still exhibit criminogenic tendencies post-release (Lofstrom, 2024). These consistent patterns
+                highlight the critical error within the prison system's approach to effectively rehabilitating
+                incarcerated individuals.</p>
+
+            <p>Furthermore, even when individuals are deemed "stable" upon their release, this doesn't necessarily mean
+                they are fully rehabilitated. Without consistent support and structured rehabilitation programs both
+                during and after incarceration, many individuals leave prison without ever confronting the underlying
+                factors that influenced their behavior. Within the past 10 years, roughly 79% of incarcerated U.S.
+                individuals were more likely to be repeat offenders after previous incarceration (Alper, 2018).</p>
+
+            <!-- Recidivism Chart (Figure 3) -->
+            <div class="chart-block">
+                <div class="chart-title">Figure 3</div>
+                <div class="chart-caption">Recidivism Rates Decreased with Age of First Arrest — Percent of prisoners
+                    re-arrested within 5 years of release, by age of first arrest</div>
+                <canvas id="recidivismChart" height="200"></canvas>
+                <p class="chart-source">Source: Bureau of Justice Statistics / USAFacts. Younger first-time offenders
+                    face dramatically higher re-arrest rates within 5 years of release, with those arrested at age 17 or
+                    younger approaching 80% by 2017.</p>
+            </div>
+
+            <p>These consistent gaps in rehabilitation suggest that the likelihood of recidivism will keep increasing
+                throughout the years. With individuals not being provided with effective, long-term rehabilitation
+                programs, they often leave prison without the tools needed to successfully reintegrate into society.
+                This worsens their future mental health and financial situation, as it becomes increasingly harder to
+                secure daily necessities such as finding jobs, applying for insurance or loans, and having affordable
+                housing (Nilsson et al., 2023). This ultimately contributes to a common trend of higher death rates,
+                recidivism, or homelessness.</p>
+
+            <div class="stat-row">
+                <div class="stat-card">
+                    <span class="stat-number">79%</span>
+                    <p class="stat-label">Of formerly incarcerated individuals re-offend within 10 years (Alper, 2018)
+                    </p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$819.7M</span>
+                    <p class="stat-label">In DOJ grants for rehabilitation &amp; education cut by the federal government
+                        (Solomon &amp; Pear, 2025)</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$840M</span>
+                    <p class="stat-label">Cut from Florida's correctional budget for construction and repairs
+                        (Joseph-Marc, 2025)</p>
+                </div>
+            </div>
+
+            <p>In tandem with these ongoing issues, these drawbacks in the prison system reflect the broader flaws of
+                the justice system. Rather than prioritizing long-term reform, the justice system tends to focus on
+                punishment and containment, which leaves little room for support or funding of a proper rehabilitation
+                system (Nilsson et al., 2023). Even with growing awareness of these issues, many correctional facilities
+                still lack the proper funding and resources to implement effective rehabilitation. As a result, the
+                justice system continues to fall short of its intended purpose, forcing it to maintain patterns of
+                recidivism and a systematic failure to implement successful reintegration into society.</p>
+        </section>
+
+    </article>
+
+    <!-- BIBLIOGRAPHY -->
+    <section id="bibliography">
+        <div class="main-content" style="padding: 0 24px;">
+            <h2>Bibliography</h2>
+            <br>
+            <div class="bib-entry">Alper, M. (2018). <em>2018 Update on Prisoner Recidivism: A 9-Year Follow-up Period
+                    (2005–2014).</em> Bureau of Justice Statistics.</div>
+            <div class="bib-entry">Columbia Justice Lab. (2024). <em>Mortality and incarceration outcomes report.</em>
+            </div>
+            <div class="bib-entry">CT Office of Correction Ombuds. (2026, January 17). <em>2025 Conditions of
+                    Confinement Report Final.</em>
+                https://portal.ct.gov/oga/-/media/oga/oco/2025-conditions-of-confinement-report-final.pdf</div>
+            <div class="bib-entry">Equal Justice Initiative. (2017). <em>All Children Are Children.</em>
+                https://eji.org/wp-content/uploads/2019/10/AllChildrenAreChildren-2017-sm2.pdf</div>
+            <div class="bib-entry">Equal Justice Initiative. (2018, December 3). <em>Alabama's Prisons Are Deadliest in
+                    the Nation.</em> https://eji.org/news/alabamas-prisons-are-deadliest-in-nation/</div>
+            <div class="bib-entry">Equal Justice Initiative. (2026). <em>Children in Adult Prison.</em>
+                https://eji.org/issues/children-in-prison/</div>
+            <div class="bib-entry">Hill, S. (2022, August 30). <em>The Psychological Effects of Solitary
+                    Confinement.</em> ProQuest. https://www.proquest.com/openview/e2b6764103fb04922cd593427649f8a5/1
+            </div>
+            <div class="bib-entry">Hopwood, S. (2021, August 23). <em>How Atrocious Prison Conditions Make Us All Less
+                    Safe.</em> Brennan Center for Justice.
+                https://www.brennancenter.org/our-work/analysis-opinion/how-atrocious-prisons-conditions-make-us-all-less-safe
+            </div>
+            <div class="bib-entry">Joseph-Marc, T. (2025, November 21). <em>FY 2025-26 Budget Summary: Corrections and
+                    Youth Justice.</em>
+                https://www.floridapolicy.org/posts/fy-2025-26-budget-summary-corrections-and-youth-justice</div>
+            <div class="bib-entry">Kaufman, A., Wolfkot, K. S., &amp; Seid, B. (2025, June 26). <em>Extreme Heat
+                    Exacerbates Dire Prison Conditions, With Few Paths to Relief.</em> State Court Report.
+                https://statecourtreport.org/our-work/analysis-opinion/extreme-heat-exacerbates-dire-prison-conditions-few-paths-relief
+            </div>
+            <div class="bib-entry">Lartey, J. (2025, December 13). <em>Why "Treatable" Is Often a Scary Word Behind
+                    Bars.</em> The Marshall Project.
+                https://www.themarshallproject.org/2025/12/13/health-care-deaths-prison-detention-center</div>
+            <div class="bib-entry">Lofstrom, M. (2024). <em>Court-ordered release and criminogenic outcomes.</em> Public
+                Policy Institute of California.</div>
+            <div class="bib-entry">Marcus, R., &amp; Canning, C. (2025, October 31). <em>He Died of Treatable Cancer in
+                    Prison. These Are His Last Words.</em> The Marshall Project.
+                https://www.themarshallproject.org/2025/10/31/cancer-in-prison-death-in-custody</div>
+            <div class="bib-entry">Nam-Sonenstein, B., &amp; Sawyer, W. (2025, August 25). <em>Youth Confinement: The
+                    Whole Pie 2025.</em> https://www.prisonpolicy.org/reports/youth2025.html</div>
+            <div class="bib-entry">Nilsson, A., et al. (2023). <em>Post-incarceration outcomes: Housing, employment, and
+                    mental health.</em></div>
+            <div class="bib-entry">Prison Policy Initiative. (2020, December 2). <em>No escape: The trauma of witnessing
+                    violence in prison.</em> https://www.prisonpolicy.org/blog/2020/12/02/witnessing-prison-violence/
+            </div>
+            <div class="bib-entry">Prison Policy Initiative. (2025). <em>Bad Behavior: How prison disciplinary policies
+                    manufacture misconduct.</em> https://www.prisonpolicy.org/reports/discipline.html</div>
+            <div class="bib-entry">Robbins, T. (2018, November 27). <em>How Prisons Fail the Mentally Ill.</em> The
+                Marshall Project. https://www.themarshallproject.org/2018/11/27/why-is-karl-taylor-dead</div>
+            <div class="bib-entry">Sawyer, W., Nam-Sonenstein, B., &amp; Wagner, P. (2026). <em>Mass Incarceration: The
+                    Whole Pie 2026.</em> https://www.prisonpolicy.org/reports/pie2026.html</div>
+            <div class="bib-entry">Shapiro, J. (2025, July 11). <em>Shackled For Days and Weeks: A Federal Report Finds
+                    Widespread Abuse in Prisons.</em> The Marshall Project.
+                https://www.themarshallproject.org/2025/07/11/report-justice-prison-abuse</div>
+            <div class="bib-entry">Solomon, A., &amp; Pear, B. (2025, May 27). <em>DOJ Funding Cuts: More Than 550
+                    Organizations Impacted, New Analysis Finds.</em> Council on Criminal Justice.
+                https://counciloncj.org/doj-funding-cuts-more-than-550-organizations-impacted-new-analysis-finds/</div>
+            <div class="bib-entry">Spence, L. E., Botterbush, K. S., Zhang, J. K., Berger, T. A., Mercier, P. A., &amp;
+                Mattei, T. A. (2025). Neglect, Recklessness, and Deliberate Indifference in the Face of a Serious
+                Neurosurgical Pathology: Lessons From the Tragic Fate of Prisoner Elliot Earl Williams. <em>Annals of
+                    Surgery Open, 6</em>(1), e554. https://doi.org/10.1097/AS9.0000000000000554</div>
+            <div class="bib-entry">Spohn, R., &amp; Kiper, M. (2025). <em>State Prison Overcrowding and Capacity
+                    Data.</em> University of Nebraska Omaha.
+                https://www.unomaha.edu/college-of-public-affairs-and-community-service/governing/stories/state-prison-overcrowding-and-capacity-data.php
+            </div>
+            <div class="bib-entry">Strong, J. D., Reiter, K., Gonzalez, G., et al. (2020). The body in isolation: The
+                physical health impacts of incarceration in solitary confinement. <em>PLoS ONE, 15</em>(10), e0238510.
+                https://doi.org/10.1371/journal.pone.0238510</div>
+            <div class="bib-entry">Thompson, et al. (2018). <em>Mental illness treatment in federal prisons.</em></div>
+            <div class="bib-entry">Wang, L. (2022, June). <em>Chronic Punishment: The unmet health needs of people in
+                    state prisons.</em> Prison Policy Initiative.
+                https://www.prisonpolicy.org/reports/chronicpunishment.html</div>
+            <div class="bib-entry">Watkins, T. (2021). <em>Nearly a Fifth of State and Federal Prisons and a Tenth of
+                    Local Jails Had at Least One Suicide in 2019.</em></div>
+            <div class="bib-entry">Western, B. (2021). Inside the Box: Safety, Health, and Isolation in Prison.
+                <em>Journal of Economic Perspectives, 35</em>(4), 97–122. https://doi.org/10.1257/jep.35.4.97</div>
+            <div class="bib-entry">Wright, K. A., Young, J. T. N., Matekel, C. G., et al. (2023). Solitary confinement
+                and the well-being of people in prison. <em>Social Science &amp; Medicine, 335</em>, 116224.
+                https://doi.org/10.1016/j.socscimed.2023.116224</div>
+        </div>
     </section>
 
-    <section id="violence">
-        <span class="chapter-label">04 · Violence</span>
-        <h2>Violence and Safety [cite: 128]</h2>
-        <p>Within prisons, the welfare of incarcerated individuals is routinely compromised[cite: 129]. (Draft section continues based on Figure 2 data) [cite: 140].</p>
-    </section>
+    <script>
+        // Intro overlay
+        window.addEventListener('load', () => {
+            setTimeout(() => document.body.classList.add('loaded'), 1500);
+        });
 
-    <section id="mental-health">
-        <span class="chapter-label">05 · Mental Health</span>
-        <h2>Mental Health/Suicide [cite: 130]</h2>
-        <p>The welfare of the prisoners should remain as one of the top priorities of the prison system and the guards, as their wellbeing depends heavily on the caretaking from them[cite: 131]. One such instance is seen with John Rudd. Despite making multiple suicidal claims and actions... he was simply injected with an antipsychotic drug and was told that he "wasn't ill enough of require regular treatment" (Thompson, et al. 2018)[cite: 132]. Furthermore, he was later removed from the suicide watch and his mental health wasn't being monitored properly[cite: 133].</p>
-    </section>
+        const ACCENT = '#c0392b';
+        const DARK = '#111111';
+        const MUTED = '#cccccc';
 
-    <section id="rehabilitation">
-        <span class="chapter-label">06 · Rehabilitation</span>
-        <h2>Rehabilitation [cite: 162]</h2>
-        <p>Over the past few years, there have been multiple scenarios where prison conditions were the reason behind transforming the outlook of incarcerated victims[cite: 163]. In fact, recent reports over the years show high risks of mortality, elevated depression levels, worsened mood levels, and disorders being more prominent (Columbia Justice Lab, 2024)[cite: 165]. Within the past 10 years, roughly 79% of incarcerated U.S. individuals were more likely to be repeat offenders after previous incarceration (Alper, 2018)[cite: 170].</p>
-    </section>
-</article>
+        Chart.defaults.font.family = "'DM Sans', sans-serif";
+        Chart.defaults.color = '#555';
 
-<section id="bibliography">
-    <div class="main-content" style="padding:0">
-        <h2>Bibliography [cite: 201]</h2>
-        <div class="bib-entry">CT Office of Correction Ombuds. (2026, January 17). 2025 Conditions of Confinement Report Final. [cite: 202]</div>
-        <div class="bib-entry">Equal Justice Initiative. (2017). All Children Are Children. [cite: 204]</div>
-        <div class="bib-entry">Equal Justice Initiative. (2018, December 3). Alabama's Prisons Are Deadliest in the Nation. [cite: 206]</div>
-        <div class="bib-entry">Prison Policy Initiative. (2020, December 2). No escape: The trauma of witnessing violence in prison. [cite: 223]</div>
-        <div class="bib-entry">Sawyer, W., Nam-Sonenstein, B., & Wagner, P. (2026). Mass Incarceration: The Whole Pie 2026. [cite: 228]</div>
-        <div class="bib-entry">Western, B. (2021). Inside the Box: Safety, Health, and Isolation in Prison. Journal of Economic Perspectives. [cite: 251]</div>
-    </div>
-</section>
+        // Figure 1: Prison Population Donut
+        new Chart(document.getElementById('prisonPopChart'), {
+            type: 'bar',
+            data: {
+                labels: ['State Prisons', 'Local Jails', 'Federal Prisons & Jails', 'Immigration Detention', 'Youth Confinement', 'Involuntary Commitment', 'Territorial Prisons'],
+                datasets: [{
+                    label: 'People Confined',
+                    data: [1098000, 546000, 201000, 71000, 29000, 25000, 7000],
+                    backgroundColor: [ACCENT, '#2c3e50', '#7f8c8d', '#95a5a6', '#bdc3c7', '#d5d8dc', '#eaecee'],
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ' ' + ctx.raw.toLocaleString() + ' people'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: v => (v / 1000000).toFixed(1) + 'M'
+                        },
+                        grid: { color: '#eee' }
+                    },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
 
-<script>
-    window.addEventListener('load', () => { 
-        setTimeout(() => document.body.classList.add('loaded'), 1500); 
-    });
-</script>
+        // Figure 1b: Overcrowding by State
+        new Chart(document.getElementById('overcrowdingChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Iowa', 'Nebraska', 'Idaho', 'Colorado', 'Georgia', 'Washington', 'Montana', 'Wisconsin', 'Hawaii'],
+                datasets: [{
+                    label: 'Operational Capacity %',
+                    data: [119, 115.4, 110.1, 106.8, 105.4, 105.3, 102.6, 101.0, 100.7],
+                    backgroundColor: ctx => ctx.raw > 110 ? ACCENT : ctx.raw > 105 ? '#e74c3c' : '#c0392b88',
+                    borderWidth: 0,
+                }, {
+                    label: '100% Baseline',
+                    data: [100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    type: 'line',
+                    borderColor: DARK,
+                    borderWidth: 1.5,
+                    borderDash: [5, 4],
+                    pointRadius: 0,
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
+                },
+                scales: {
+                    y: {
+                        min: 95,
+                        ticks: { callback: v => v + '%' },
+                        grid: { color: '#eee' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // Figure 2: Mental Health Treatment Decline
+        new Chart(document.getElementById('mentalHealthChart'), {
+            type: 'line',
+            data: {
+                labels: ['2013', '2014', '2015', '2016', '2017', '2018'],
+                datasets: [{
+                    label: 'Prisoners Receiving Mental Health Treatment',
+                    data: [null, 7300, 6500, 5900, 5400, 4710],
+                    borderColor: ACCENT,
+                    backgroundColor: 'rgba(192,57,43,0.08)',
+                    borderWidth: 2.5,
+                    pointRadius: 4,
+                    pointBackgroundColor: ACCENT,
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    annotation: {},
+                    tooltip: { callbacks: { label: ctx => ctx.raw ? ctx.raw.toLocaleString() + ' prisoners' : 'N/A' } }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 9000,
+                        ticks: { callback: v => v.toLocaleString() },
+                        grid: { color: '#eee' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // Figure 3: Recidivism by Age
+        new Chart(document.getElementById('recidivismChart'), {
+            type: 'line',
+            data: {
+                labels: ['2013', '2014', '2015', '2016', '2017'],
+                datasets: [
+                    {
+                        label: '17 or younger',
+                        data: [37, 55, 65, 73, 80],
+                        borderColor: ACCENT,
+                        backgroundColor: 'transparent',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                        pointBackgroundColor: ACCENT,
+                        tension: 0.3
+                    },
+                    {
+                        label: '18–29',
+                        data: [30, 46, 56, 63, 70],
+                        borderColor: '#2c3e50',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#2c3e50',
+                        tension: 0.3
+                    },
+                    {
+                        label: '30–39',
+                        data: [20, 30, 37, 43, 49],
+                        borderColor: '#7f8c8d',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#7f8c8d',
+                        tension: 0.3
+                    },
+                    {
+                        label: '40 or older',
+                        data: [12, 18, 22, 26, 30],
+                        borderColor: '#bdc3c7',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#bdc3c7',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12 }, padding: 16 }
+                    },
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 85,
+                        ticks: { callback: v => v + '%' },
+                        grid: { color: '#eee' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
