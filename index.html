@@ -429,6 +429,26 @@
             border-top: 1px solid var(--rule);
             margin: 60px 0;
         }
+
+        /* CITATION LINKS */
+        a.cite-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1em;
+            vertical-align: sub;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            margin-left: 0.5px;
+            white-space: nowrap;
+        }
+
+        a.cite-link:hover {
+            text-decoration: underline;
+        }
+
+        .bib-entry {
+            scroll-margin-top: 80px;
+        }
     </style>
 </head>
 
@@ -471,47 +491,54 @@
                 fair." Despite these secure qualities, how it performs is essentially flawed because of what
                 incarcerated people deal with inside the prison system.</p>
 
-            <!-- Figure 1: Prison Population Chart -->
-            <div class="chart-block">
-                <div class="chart-title">Figure 1</div>
-                <div class="chart-caption">Current US Prison Population and Distributions (Prison Policy Initiative,
-                    2026)</div>
-                <canvas id="prisonPopChart" height="180"></canvas>
-                <p class="chart-source">Source: Prison Policy Initiative — Mass Incarceration: The Whole Pie 2026
-                    (www.prisonpolicy.org/reports/pie2026.html)</p>
-            </div>
+            <hr class="section-rule">
 
-            <p>As one of the largest prison systems in the world that has billions invested, most inmates are often
-                worse off than those who are homeless or living in poverty.</p>
-        </section>
+            <!-- OVERCROWDING -->
+            <section id="overcrowding">
+                <span class="chapter-label">02 · Overcrowding &amp; Neglect</span>
+                <h2>Overcrowding and Neglect</h2>
+                <p>With over 2 million people in the US prison system at any given time, there have been many instances
+                    where prisoners are often crammed into small, claustrophobic cells, faced harsh heat and cold
+                    without
+                    proper ventilation and climate control, deal with unsanitary and disgusting food and sanitary
+                    conditions, and are deprived of access to educational, social, and legal services <a
+                        class="cite-link" href="#bib-sawyer2026">(Sawyer et al., 2026;</a>
+                    <a class="cite-link" href="#bib-western2021">Western, 2021)</a>. The conditions of overcrowding and
+                    ineffective services and facilities can lead to
+                    prisoners' loss of humanity and dignity, which can lead to an increase in mental illness, violence,
+                    assaults, and suicide <a class="cite-link" href="#bib-western2021">(Western, 2021;</a> <a
+                        class="cite-link" href="#bib-hopwood2021">Hopwood, 2021)</a>.
+                </p>
 
-        <hr class="section-rule">
+                <!-- Figure 1: Prison Population Chart -->
+                <div class="chart-block">
+                    <div class="chart-title">Figure 1</div>
+                    <div class="chart-caption">Current US Prison Population and Distributions (Prison Policy Initiative,
+                        2026)</div>
+                    <canvas id="prisonPopChart" height="180"></canvas>
+                    <p class="chart-source">Source: Prison Policy Initiative — Mass Incarceration: The Whole Pie 2026
+                        (www.prisonpolicy.org/reports/pie2026.html)</p>
+                </div>
 
-        <!-- OVERCROWDING -->
-        <section id="overcrowding">
-            <span class="chapter-label">02 · Overcrowding &amp; Neglect</span>
-            <h2>Overcrowding and Neglect</h2>
-            <p>With over 2 million people in the US prison system at any given time, there have been many instances
-                where prisoners are often crammed into small, claustrophobic cells, faced harsh heat and cold without
-                proper ventilation and climate control, deal with unsanitary and disgusting food and sanitary
-                conditions, and are deprived of access to educational, social, and legal services (Sawyer et al., 2026;
-                Western, 2021). The conditions of overcrowding and ineffective services and facilities can lead to
-                prisoners' loss of humanity and dignity, which can lead to an increase in mental illness, violence,
-                assaults, and suicide (Western, 2021; Hopwood, 2021).</p>
+                <p>As one of the largest prison systems in the world that has billions invested, most inmates are often
+                    worse off than those who are homeless or living in poverty.</p>
+            </section>
 
             <p>Overcrowding in prisons has been a persistent issue for almost 20 years, and continues to be a problem
                 even today. As of 2019, Iowa leads the nation in prison overcrowding, with its prison population at 119%
-                of its operational capacity — the number of prisoners a prison can accommodate (Spohn &amp; Kiper,
-                2025). Over 10 states have reached or exceeded their operational capacity, with prison capacity
-                exceeding design capacity, leaving insufficient physical space to house all prisoners (Spohn &amp;
-                Kiper, 2025).</p>
+                of its operational capacity — the number of prisoners a prison can accommodate <a class="cite-link"
+                    href="#bib-spohn2025">(Spohn &amp; Kiper, 2025)</a>. Over 10 states have reached or exceeded their
+                operational capacity, with prison capacity
+                exceeding design capacity, leaving insufficient physical space to house all prisoners <a
+                    class="cite-link" href="#bib-spohn2025">(Spohn &amp; Kiper, 2025)</a>.</p>
 
             <p>With such overcrowding, this increases tension and stress in the prison community, leading to violent
-                actions and deterioration (Spohn &amp; Kiper, 2025; Western, 2021). One important example was in 2009,
+                actions and deterioration <a class="cite-link" href="#bib-spohn2025">(Spohn &amp; Kiper, 2025;</a> <a
+                    class="cite-link" href="#bib-western2021">Western, 2021)</a>. One important example was in 2009,
                 when most California prisons were overcrowded at 150% of their designed capacity; most prisoners were in
                 disarray, with hundreds of cases of violence, extreme health risks, and as then-Governor Arnold
                 Schwarzenegger reported, the suicide rate in 29 severely overcrowded prisons was approaching an average
-                of one per week (Western, 2021).</p>
+                of one per week <a class="cite-link" href="#bib-western2021">(Western, 2021)</a>.</p>
 
             <div class="table-block">
                 <div class="table-title">Table 1</div>
@@ -606,35 +633,45 @@
             <h3>Facility Conditions: Heat, Sanitation, and Services</h3>
             <p>With most prisons operating beyond their capacity, this has led to more issues with facilities and
                 services provided to prisoners. Prisoners are often guaranteed certain privileges, such as their own
-                beds, bathrooms, food, and educational, social, and legal services (Western, 2021). This is to ensure
+                beds, bathrooms, food, and educational, social, and legal services <a class="cite-link"
+                    href="#bib-western2021">(Western, 2021)</a>. This is to ensure
                 the prisoners can be reintegrated and rehabilitated into normal society after their release. However,
                 with prisons at almost full or exceeding capacity, these services often break down and fail, leading to
                 issues of unsanitary conditions, neglect, and non-compliance with prisoners.</p>
 
             <p>One such issue is heat, which is more evident in southern states such as Alabama, Texas, and Georgia.
                 Often, prison climate systems fail without warning, resulting in extremely sweltering conditions
-                reaching 103–110°F for weeks on end (Kaufman et al., 2025). With understaffed facilities, poor
+                reaching 103–110°F for weeks on end <a class="cite-link" href="#bib-kaufman2025">(Kaufman et al.,
+                    2025)</a>. With understaffed facilities, poor
                 conditions, and legal and political obstacles, systems at these prisons do not get repaired, leading to
                 increased violence, heat stroke, dehydration, and even deaths — which accounted for almost 13% of all
-                deaths in Texas prisons during summer months (Kaufman et al., 2025; Hopwood, 2021).</p>
+                deaths in Texas prisons during summer months <a class="cite-link" href="#bib-kaufman2025">(Kaufman et
+                    al., 2025;</a> <a class="cite-link" href="#bib-hopwood2021">Hopwood, 2021)</a>.</p>
 
             <p>If heat and climate are not the issue, then lavatories, food, and prisoners' services are other points of
                 failure. Often, correctional facilities have very unsanitary conditions in lavatories and food
-                preparation areas, creating a risk of bacterial contamination and illness (Western, 2021; CT Office of
-                Correction Ombuds, 2026). According to a report from the Connecticut Office of the Correction Ombuds,
+                preparation areas, creating a risk of bacterial contamination and illness <a class="cite-link"
+                    href="#bib-western2021">(Western, 2021;</a> <a class="cite-link" href="#bib-ct2026">CT Office of
+                    Correction Ombuds, 2026)</a>. According to a report from the Connecticut Office of the Correction
+                Ombuds,
                 there is extensive damage to showers and bathrooms in most state prisons, and a lack of basic cleaning
-                and hygiene supplies (2026). Additionally, there is a worrying amount of structural and facility damage,
+                and hygiene supplies <a class="cite-link" href="#bib-ct2026">(2026)</a>. Additionally, there is a
+                worrying amount of structural and facility damage,
                 with mold, rust, and corrosion present at most facilities, raising concerns about injury and illness
-                from mold, fiberglass, and rust (CT Office of Correction Ombuds, 2026).</p>
+                from mold, fiberglass, and rust <a class="cite-link" href="#bib-ct2026">(CT Office of Correction Ombuds,
+                    2026)</a>.</p>
 
             <p>Besides physical conditions, social, legal, and educational services are often nonexistent or in poor
                 condition in prisons. Reports show that many services, such as libraries and phones, are often
-                restricted or inoperable, with officials citing repairs or budget cuts (CT Office of Correction Ombuds,
-                2026). Without these services, people are unable to communicate with family and friends, furthering
+                restricted or inoperable, with officials citing repairs or budget cuts <a class="cite-link"
+                    href="#bib-ct2026">(CT Office of Correction Ombuds,
+                    2026)</a>. Without these services, people are unable to communicate with family and friends,
+                furthering
                 distress and isolation among prisoners. State legal assistance organizations that help poor and
                 disadvantaged prisoners with legal work, parole, and other services are also critically important, yet
                 these services are often understaffed and underfunded, leaving many prisoners turned away or neglected
-                when seeking legal help (CT Office of Correction Ombuds, 2026).</p>
+                when seeking legal help <a class="cite-link" href="#bib-ct2026">(CT Office of Correction Ombuds,
+                    2026)</a>.</p>
 
             <div class="pull-quote">"Prisons are turning from a place of rehabilitation and redemption to more of a
                 breeding ground for sickness, violence, and death."</div>
@@ -643,8 +680,11 @@
                 detentions, the consequences for prisoners continue to compound. The Department of Justice has already
                 cut about $819.7 million in grants for federal rehabilitation and education resources, and in Florida,
                 the governor has cut at least $840 million from the correctional budget for construction and repairs
-                (Solomon &amp; Pear, 2025; Joseph-Marc, 2025). Without any sort of reforms or policies to repair,
-                oversee, and accommodate the growing prisoner population, the consequences will surely increase.</p>
+                <a class="cite-link" href="#bib-solomon2025">(Solomon &amp; Pear, 2025;</a> <a class="cite-link"
+                    href="#bib-josephmarc2025">Joseph-Marc, 2025)</a>. Without any sort of reforms or policies to
+                repair,
+                oversee, and accommodate the growing prisoner population, the consequences will surely increase.
+            </p>
         </section>
 
         <hr class="section-rule">
@@ -681,20 +721,23 @@
                     serious neurosurgical condition, Williams received inadequate diagnosis and treatment over a
                     prolonged period. Scholars who examined his case characterized the institutional response as
                     constituting "neglect, recklessness, and deliberate indifference in the face of a serious
-                    neurosurgical pathology" (Spence et al., 2025). His death highlighted how systemic failures in
+                    neurosurgical pathology" <a class="cite-link" href="#bib-spence2025">(Spence et al., 2025)</a>. His
+                    death highlighted how systemic failures in
                     prison healthcare can transform a treatable condition into a fatal one.</p>
             </div>
 
             <div class="case-box">
                 <span class="case-label">Case Study · Youth Vulnerability</span>
                 <h4>Children in Adult Prisons</h4>
-                <p>Children placed in adult correctional facilities face compounded dangers. Research from the Equal
-                    Justice Initiative (2017) documents that youth in adult prisons are at dramatically elevated risk of
+                <p>Children placed in adult correctional facilities face compounded dangers. Research from the <a
+                        class="cite-link" href="#bib-eji2017">Equal
+                        Justice Initiative (2017)</a> documents that youth in adult prisons are at dramatically elevated
+                    risk of
                     physical and sexual abuse. In one documented instance from a juvenile detention facility, a young
                     boy was subjected to sexual assault — an event that underscores the catastrophic failure of duty of
                     care for the most vulnerable populations in the system. The EJI has long argued that all children
-                    are children, and the justice system must reflect that fundamental truth (Equal Justice Initiative,
-                    2017).</p>
+                    are children, and the justice system must reflect that fundamental truth <a class="cite-link"
+                        href="#bib-eji2017">(Equal Justice Initiative, 2017)</a>.</p>
             </div>
 
             <div class="case-box">
@@ -708,7 +751,8 @@
             </div>
 
             <p>The Marshall Project documented cases of prisoners dying of treatable conditions — including cancer —
-                after being denied timely or adequate medical care (Marcus &amp; Canning, 2025; Lartey, 2025). In many
+                after being denied timely or adequate medical care <a class="cite-link" href="#bib-marcus2025">(Marcus
+                    &amp; Canning, 2025;</a> <a class="cite-link" href="#bib-lartey2025">Lartey, 2025)</a>. In many
                 cases, inmates who flagged symptoms repeatedly were dismissed or undertreated until their conditions
                 became terminal. These outcomes reflect a system where cost-cutting consistently overrides
                 constitutional obligations to provide basic medical care.</p>
@@ -725,9 +769,12 @@
                 conditions in which violence is not an aberration but a predictable outcome.</p>
 
             <p>Alabama's prisons have been documented as the deadliest in the nation, with homicide rates far exceeding
-                national averages for correctional facilities (Equal Justice Initiative, 2018). Witnessing violence —
-                even without being a direct victim — causes lasting psychological trauma. A Prison Policy Initiative
-                report (2020) found that exposure to violence in prison creates a form of trauma equivalent to combat
+                national averages for correctional facilities <a class="cite-link" href="#bib-eji2018">(Equal Justice
+                    Initiative, 2018)</a>. Witnessing violence —
+                even without being a direct victim — causes lasting psychological trauma. A <a class="cite-link"
+                    href="#bib-ppi2020">Prison Policy Initiative
+                    report (2020)</a> found that exposure to violence in prison creates a form of trauma equivalent to
+                combat
                 exposure, with long-term consequences for mental health and behavior post-release.</p>
 
             <div class="case-box">
@@ -736,7 +783,8 @@
                 <p>Karl Taylor was an inmate who was first struck in the head by a prison guard. The abuse escalated to
                     the point where he could not breathe during an altercation. He subsequently died. All three of the
                     state correctional department, state police, and the local district attorney concluded that his
-                    death was caused by his declining health — despite the documented physical assault (Robbins, 2018).
+                    death was caused by his declining health — despite the documented physical assault <a
+                        class="cite-link" href="#bib-robbins2018">(Robbins, 2018)</a>.
                     Taylor had schizophrenia and an additional disorder at the time, illustrating how mentally ill
                     prisoners are especially vulnerable to staff violence while simultaneously being denied
                     accountability for their deaths.</p>
@@ -744,7 +792,9 @@
 
             <p>A 2025 federal report documented widespread abuse in federal prisons, including prisoners being shackled
                 for days and weeks at a time — a practice condemned as a form of torture under international human
-                rights standards (Shapiro, 2025). The Prison Policy Initiative (2025) has also documented how prison
+                rights standards <a class="cite-link" href="#bib-shapiro2025">(Shapiro, 2025)</a>. The <a
+                    class="cite-link" href="#bib-ppi2025">Prison Policy Initiative (2025)</a> has also documented how
+                prison
                 disciplinary policies themselves manufacture misconduct, creating cycles of punishment that escalate
                 rather than de-escalate violence.</p>
 
@@ -767,17 +817,20 @@
                             <td>255 deaths in 2016</td>
                             <td>—</td>
                             <td>333 deaths in 2016</td>
-                            <td>Mortality in State and Federal Prisons, 2001–2016; Mortality in Local Jails, 2000–2016</td>
+                            <td>Mortality in State and Federal Prisons, 2001–2016; Mortality in Local Jails, 2000–2016
+                            </td>
                         </tr>
                         <tr>
                             <td>Deaths by homicide in correctional facility</td>
                             <td>95 deaths in 2016</td>
                             <td>—</td>
                             <td>31 deaths in 2016</td>
-                            <td>Mortality in State and Federal Prisons, 2001–2016; Mortality in Local Jails, 2000–2016</td>
+                            <td>Mortality in State and Federal Prisons, 2001–2016; Mortality in Local Jails, 2000–2016
+                            </td>
                         </tr>
                         <tr>
-                            <td>"Intentionally injured" by staff or other incarcerated person since admission to prison</td>
+                            <td>"Intentionally injured" by staff or other incarcerated person since admission to prison
+                            </td>
                             <td>14.8% of incarcerated people in 2004</td>
                             <td>8.3% of incarcerated people in 2004</td>
                             <td>N/A</td>
@@ -798,7 +851,8 @@
                             <td>Census of State and Federal Adult Correctional Facilities, 2005</td>
                         </tr>
                         <tr>
-                            <td>Incidents of sexual victimization of incarcerated people (perpetrated by staff and incarcerated people)</td>
+                            <td>Incidents of sexual victimization of incarcerated people (perpetrated by staff and
+                                incarcerated people)</td>
                             <td>16,940 reported incidents in 2015</td>
                             <td>740 reported incidents in 2015</td>
                             <td>5,809 reported incidents in 2015</td>
@@ -807,22 +861,14 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="5" style="font-style:italic; font-size:0.8rem; color:var(--muted); padding-top:10px;">
+                            <td colspan="5"
+                                style="font-style:italic; font-size:0.8rem; color:var(--muted); padding-top:10px;">
                                 1,473 substantiated incidents in state and federal prisons and local jails in 2015
                             </td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
-
-            <h3>Solitary Confinement</h3>
-            <p>Solitary confinement — isolation in a small cell for 22–24 hours per day — is widely used as a
-                disciplinary tool but has devastating health consequences. Research documents that solitary confinement
-                causes severe physical health impacts, including cardiovascular deterioration, weakened immune function,
-                and heightened injury risk (Strong et al., 2020). The psychological effects are equally severe,
-                including anxiety, paranoia, hallucinations, and an inability to regulate emotions (Hill, 2022). Studies
-                confirm that individuals subjected to solitary confinement report dramatically reduced wellbeing, with
-                effects persisting long after release (Wright et al., 2023).</p>
         </section>
 
         <hr class="section-rule">
@@ -842,7 +888,8 @@
                 <p>One such instance is seen with John Rudd. Despite making multiple suicidal claims and taking
                     self-harming actions — including banging his head on the wall and attempting to snap his own neck —
                     he was simply injected with an antipsychotic drug and was told that he "wasn't ill enough to require
-                    regular treatment" (Thompson et al., 2018). He was later removed from suicide watch, and his mental
+                    regular treatment" <a class="cite-link" href="#bib-thompson2018">(Thompson et al., 2018)</a>. He was
+                    later removed from suicide watch, and his mental
                     health was not being properly monitored. Instead of focusing on the underlying problem, the
                     correctional system opted for temporary solutions — a pattern that proved tragically insufficient.
                 </p>
@@ -856,33 +903,39 @@
                     he lost the ability to breathe during an altercation. He later died. State authorities attributed
                     his death to declining health rather than the assault — a conclusion that illustrates the profound
                     lack of accountability in cases involving mentally ill inmates who are also victims of staff
-                    violence (Robbins, 2018).</p>
+                    violence <a class="cite-link" href="#bib-robbins2018">(Robbins, 2018)</a>.</p>
             </div>
 
-            <!-- Mental Health Treatment Chart (Figure 2) -->
+            <!-- Figure 2: Mental Health Problems & Treatment in State Prisons -->
             <div class="chart-block">
                 <div class="chart-title">Figure 2</div>
-                <div class="chart-caption">Mental Illness Treatment for Federal Prisoners — Impact of Policy Change
-                    (Thompson et al., 2018)</div>
-                <canvas id="mentalHealthChart" height="160"></canvas>
-                <p class="chart-source">Source: Federal Bureau of Prisons. A policy change in 2014 led to a roughly 35%
-                    decrease in mental illness treatment for federal prisoners, from approximately 7,700 to 4,710 by
-                    2018.</p>
+                <div class="chart-caption">Over half of people in state prisons report mental health problems, but only
+                    1 in 4 has received professional help in prison — percentage of people in state prisons nationwide
+                    who have indicated a recent or past mental health problem, compared to the percentage who have
+                    received any professional help since admission (Bureau of Justice Statistics, 2021)</div>
+                <canvas id="mentalHealthChart" height="220"></canvas>
+                <p class="chart-source">Bureau of Justice Statistics. (2021). <em>Indicators of mental health problems
+                        reported by prisoners: Survey of prison inmates, 2016.</em> U.S. Department of Justice, Office
+                    of Justice Programs.
+                    https://bjs.ojp.gov/library/publications/indicators-mental-health-problems-reported-prisoners-survey-prison-inmates-2016
+                    | Visualized by Prison Policy Initiative.</p>
             </div>
-
-            <p>As seen in the graph above, a policy change in 2014 played a direct role in the decline of mental illness
-                treatment for federal prisoners — a 35% decrease (Thompson et al., 2018). These cases and events
+            <p>As the chart above illustrates, over half of people in state prisons report mental health problems, but
+                only 1 in 4 has received professional help since admission <a class="cite-link"
+                    href="#bib-bjs2021">(Bureau of Justice Statistics, 2021)</a>. These cases and stark figures
                 highlight the negligence and failure of the prison system to adequately monitor and care for its
                 inmates' mental wellbeing.</p>
 
             <p>Beyond individual cases, systemic data confirms the crisis. Nearly a fifth of state and federal prisons
-                and a tenth of local jails had at least one suicide in 2019 (Watkins, 2021). Chronic untreated mental
+                and a tenth of local jails had at least one suicide in 2019 <a class="cite-link"
+                    href="#bib-watkins2021">(Watkins, 2021)</a>. Chronic untreated mental
                 illness, isolation, loss of autonomy, and exposure to violence create conditions under which suicide
                 becomes an all-too-common outcome.</p>
 
             <h3>Chronic Mental Health Needs Go Unmet</h3>
             <p>A 2022 Prison Policy Initiative report on chronic punishment found that the mental and physical health
-                needs of people in state prisons are drastically unmet (Wang, 2022). People enter prison with higher
+                needs of people in state prisons are drastically unmet <a class="cite-link" href="#bib-wang2022">(Wang,
+                    2022)</a>. People enter prison with higher
                 rates of mental illness than the general population, yet correctional healthcare systems are
                 consistently underfunded and understaffed. Rather than providing treatment, the prison environment
                 frequently worsens pre-existing conditions and generates new ones through trauma, isolation, and
@@ -900,10 +953,11 @@
                 innocent victims who were wrongfully convicted were influenced after release to commit a crime due to
                 mental pressures. In fact, recent reports over the years show high risks of mortality, elevated
                 depression levels, worsened mood levels, and disorders being more prominent among formerly incarcerated
-                individuals (Columbia Justice Lab, 2024).</p>
+                individuals <a class="cite-link" href="#bib-columbia2024">(Columbia Justice Lab, 2024)</a>.</p>
 
             <p>In new cases, empirical evidence suggests that even court-ordered releases that deem the convicted person
-                "stable" still exhibit criminogenic tendencies post-release (Lofstrom, 2024). These consistent patterns
+                "stable" still exhibit criminogenic tendencies post-release <a class="cite-link"
+                    href="#bib-lofstrom2024">(Lofstrom, 2024)</a>. These consistent patterns
                 highlight the critical error within the prison system's approach to effectively rehabilitating
                 incarcerated individuals.</p>
 
@@ -911,7 +965,8 @@
                 they are fully rehabilitated. Without consistent support and structured rehabilitation programs both
                 during and after incarceration, many individuals leave prison without ever confronting the underlying
                 factors that influenced their behavior. Within the past 10 years, roughly 79% of incarcerated U.S.
-                individuals were more likely to be repeat offenders after previous incarceration (Alper, 2018).</p>
+                individuals were more likely to be repeat offenders after previous incarceration <a class="cite-link"
+                    href="#bib-alper2018">(Alper, 2018)</a>.</p>
 
             <!-- Recidivism Chart (Figure 3) -->
             <div class="chart-block">
@@ -929,31 +984,15 @@
                 programs, they often leave prison without the tools needed to successfully reintegrate into society.
                 This worsens their future mental health and financial situation, as it becomes increasingly harder to
                 secure daily necessities such as finding jobs, applying for insurance or loans, and having affordable
-                housing (Nilsson et al., 2023). This ultimately contributes to a common trend of higher death rates,
+                housing <a class="cite-link" href="#bib-nilsson2023">(Nilsson et al., 2023)</a>. This ultimately
+                contributes to a common trend of higher death rates,
                 recidivism, or homelessness.</p>
-
-            <div class="stat-row">
-                <div class="stat-card">
-                    <span class="stat-number">79%</span>
-                    <p class="stat-label">Of formerly incarcerated individuals re-offend within 10 years (Alper, 2018)
-                    </p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">$819.7M</span>
-                    <p class="stat-label">In DOJ grants for rehabilitation &amp; education cut by the federal government
-                        (Solomon &amp; Pear, 2025)</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">$840M</span>
-                    <p class="stat-label">Cut from Florida's correctional budget for construction and repairs
-                        (Joseph-Marc, 2025)</p>
-                </div>
-            </div>
 
             <p>In tandem with these ongoing issues, these drawbacks in the prison system reflect the broader flaws of
                 the justice system. Rather than prioritizing long-term reform, the justice system tends to focus on
                 punishment and containment, which leaves little room for support or funding of a proper rehabilitation
-                system (Nilsson et al., 2023). Even with growing awareness of these issues, many correctional facilities
+                system <a class="cite-link" href="#bib-nilsson2023">(Nilsson et al., 2023)</a>. Even with growing
+                awareness of these issues, many correctional facilities
                 still lack the proper funding and resources to implement effective rehabilitation. As a result, the
                 justice system continues to fall short of its intended purpose, forcing it to maintain patterns of
                 recidivism and a systematic failure to implement successful reintegration into society.</p>
@@ -966,83 +1005,112 @@
         <div class="main-content" style="padding: 0 24px;">
             <h2>Bibliography</h2>
             <br>
-            <div class="bib-entry">Alper, M. (2018). <em>2018 Update on Prisoner Recidivism: A 9-Year Follow-up Period
-                    (2005–2014).</em> Bureau of Justice Statistics.</div>
-            <div class="bib-entry">Columbia Justice Lab. (2024). <em>Mortality and incarceration outcomes report.</em>
+            <div id="bib-alper2018" class="bib-entry">Alper, M. (2018). <em>2018 Update on Prisoner Recidivism: A 9-Year
+                    Follow-up Period (2005–2014).</em> Bureau of Justice Statistics.</div>
+            <div id="bib-bjs2021" class="bib-entry">Bureau of Justice Statistics. (2021). <em>Indicators of mental
+                    health problems reported by prisoners: Survey of prison inmates, 2016.</em> U.S. Department of
+                Justice. <a
+                    href="https://bjs.ojp.gov/library/publications/indicators-mental-health-problems-reported-prisoners-survey-prison-inmates-2016"
+                    target="_blank">https://bjs.ojp.gov/...</a></div>
+            <div id="bib-columbia2024" class="bib-entry">Columbia Justice Lab. (2024). <em>Mortality and incarceration
+                    outcomes report.</em></div>
+            <div id="bib-ct2026" class="bib-entry">CT Office of Correction Ombuds. (2026, January 17). <em>2025
+                    Conditions of Confinement Report Final.</em> <a
+                    href="https://portal.ct.gov/oga/-/media/oga/oco/2025-conditions-of-confinement-report-final.pdf"
+                    target="_blank">https://portal.ct.gov/...</a></div>
+            <div id="bib-eji2017" class="bib-entry">Equal Justice Initiative. (2017). <em>All Children Are
+                    Children.</em> <a
+                    href="https://eji.org/wp-content/uploads/2019/10/AllChildrenAreChildren-2017-sm2.pdf"
+                    target="_blank">https://eji.org/...</a></div>
+            <div id="bib-eji2018" class="bib-entry">Equal Justice Initiative. (2018, December 3). <em>Alabama's Prisons
+                    Are Deadliest in the Nation.</em> <a
+                    href="https://eji.org/news/alabamas-prisons-are-deadliest-in-nation/"
+                    target="_blank">https://eji.org/news/...</a></div>
+            <div id="bib-eji2026" class="bib-entry">Equal Justice Initiative. (2026). <em>Children in Adult Prison.</em>
+                <a href="https://eji.org/issues/children-in-prison/" target="_blank">https://eji.org/issues/...</a>
             </div>
-            <div class="bib-entry">CT Office of Correction Ombuds. (2026, January 17). <em>2025 Conditions of
-                    Confinement Report Final.</em>
-                https://portal.ct.gov/oga/-/media/oga/oco/2025-conditions-of-confinement-report-final.pdf</div>
-            <div class="bib-entry">Equal Justice Initiative. (2017). <em>All Children Are Children.</em>
-                https://eji.org/wp-content/uploads/2019/10/AllChildrenAreChildren-2017-sm2.pdf</div>
-            <div class="bib-entry">Equal Justice Initiative. (2018, December 3). <em>Alabama's Prisons Are Deadliest in
-                    the Nation.</em> https://eji.org/news/alabamas-prisons-are-deadliest-in-nation/</div>
-            <div class="bib-entry">Equal Justice Initiative. (2026). <em>Children in Adult Prison.</em>
-                https://eji.org/issues/children-in-prison/</div>
-            <div class="bib-entry">Hill, S. (2022, August 30). <em>The Psychological Effects of Solitary
-                    Confinement.</em> ProQuest. https://www.proquest.com/openview/e2b6764103fb04922cd593427649f8a5/1
+            <div id="bib-hill2022" class="bib-entry">Hill, S. (2022, August 30). <em>The Psychological Effects of
+                    Solitary Confinement.</em> ProQuest. <a
+                    href="https://www.proquest.com/openview/e2b6764103fb04922cd593427649f8a5/1"
+                    target="_blank">https://www.proquest.com/...</a></div>
+            <div id="bib-hopwood2021" class="bib-entry">Hopwood, S. (2021, August 23). <em>How Atrocious Prison
+                    Conditions Make Us All Less Safe.</em> Brennan Center for Justice. <a
+                    href="https://www.brennancenter.org/our-work/analysis-opinion/how-atrocious-prisons-conditions-make-us-all-less-safe"
+                    target="_blank">https://www.brennancenter.org/...</a></div>
+            <div id="bib-josephmarc2025" class="bib-entry">Joseph-Marc, T. (2025, November 21). <em>FY 2025-26 Budget
+                    Summary: Corrections and Youth Justice.</em> <a
+                    href="https://www.floridapolicy.org/posts/fy-2025-26-budget-summary-corrections-and-youth-justice"
+                    target="_blank">https://www.floridapolicy.org/...</a></div>
+            <div id="bib-kaufman2025" class="bib-entry">Kaufman, A., Wolfkot, K. S., &amp; Seid, B. (2025, June 26).
+                <em>Extreme Heat Exacerbates Dire Prison Conditions, With Few Paths to Relief.</em> State Court Report.
+                <a href="https://statecourtreport.org/our-work/analysis-opinion/extreme-heat-exacerbates-dire-prison-conditions-few-paths-relief"
+                    target="_blank">https://statecourtreport.org/...</a>
             </div>
-            <div class="bib-entry">Hopwood, S. (2021, August 23). <em>How Atrocious Prison Conditions Make Us All Less
-                    Safe.</em> Brennan Center for Justice.
-                https://www.brennancenter.org/our-work/analysis-opinion/how-atrocious-prisons-conditions-make-us-all-less-safe
+            <div id="bib-lartey2025" class="bib-entry">Lartey, J. (2025, December 13). <em>Why "Treatable" Is Often a
+                    Scary Word Behind Bars.</em> The Marshall Project. <a
+                    href="https://www.themarshallproject.org/2025/12/13/health-care-deaths-prison-detention-center"
+                    target="_blank">https://www.themarshallproject.org/...</a></div>
+            <div id="bib-lofstrom2024" class="bib-entry">Lofstrom, M. (2024). <em>Court-ordered release and criminogenic
+                    outcomes.</em> Public Policy Institute of California.</div>
+            <div id="bib-marcus2025" class="bib-entry">Marcus, R., &amp; Canning, C. (2025, October 31). <em>He Died of
+                    Treatable Cancer in Prison. These Are His Last Words.</em> The Marshall Project. <a
+                    href="https://www.themarshallproject.org/2025/10/31/cancer-in-prison-death-in-custody"
+                    target="_blank">https://www.themarshallproject.org/...</a></div>
+            <div id="bib-nilsson2023" class="bib-entry">Nilsson, A., et al. (2023). <em>Post-incarceration outcomes:
+                    Housing, employment, and mental health.</em></div>
+            <div id="bib-ppi2020" class="bib-entry">Prison Policy Initiative. (2020, December 2). <em>No escape: The
+                    trauma of witnessing violence in prison.</em> <a
+                    href="https://www.prisonpolicy.org/blog/2020/12/02/witnessing-prison-violence/"
+                    target="_blank">https://www.prisonpolicy.org/...</a></div>
+            <div id="bib-ppi2025" class="bib-entry">Prison Policy Initiative. (2025). <em>Bad Behavior: How prison
+                    disciplinary policies manufacture misconduct.</em> <a
+                    href="https://www.prisonpolicy.org/reports/discipline.html"
+                    target="_blank">https://www.prisonpolicy.org/reports/...</a></div>
+            <div id="bib-robbins2018" class="bib-entry">Robbins, T. (2018, November 27). <em>How Prisons Fail the
+                    Mentally Ill.</em> The Marshall Project. <a
+                    href="https://www.themarshallproject.org/2018/11/27/why-is-karl-taylor-dead"
+                    target="_blank">https://www.themarshallproject.org/...</a></div>
+            <div id="bib-sawyer2026" class="bib-entry">Sawyer, W., Nam-Sonenstein, B., &amp; Wagner, P. (2026). <em>Mass
+                    Incarceration: The Whole Pie 2026.</em> <a href="https://www.prisonpolicy.org/reports/pie2026.html"
+                    target="_blank">https://www.prisonpolicy.org/reports/pie2026.html</a></div>
+            <div id="bib-shapiro2025" class="bib-entry">Shapiro, J. (2025, July 11). <em>Shackled For Days and Weeks: A
+                    Federal Report Finds Widespread Abuse in Prisons.</em> The Marshall Project. <a
+                    href="https://www.themarshallproject.org/2025/07/11/report-justice-prison-abuse"
+                    target="_blank">https://www.themarshallproject.org/...</a></div>
+            <div id="bib-solomon2025" class="bib-entry">Solomon, A., &amp; Pear, B. (2025, May 27). <em>DOJ Funding
+                    Cuts: More Than 550 Organizations Impacted, New Analysis Finds.</em> Council on Criminal Justice. <a
+                    href="https://counciloncj.org/doj-funding-cuts-more-than-550-organizations-impacted-new-analysis-finds/"
+                    target="_blank">https://counciloncj.org/...</a></div>
+            <div id="bib-spence2025" class="bib-entry">Spence, L. E., Botterbush, K. S., Zhang, J. K., Berger, T. A.,
+                Mercier, P. A., &amp; Mattei, T. A. (2025). Neglect, Recklessness, and Deliberate Indifference in the
+                Face of a Serious Neurosurgical Pathology: Lessons From the Tragic Fate of Prisoner Elliot Earl
+                Williams. <em>Annals of Surgery Open, 6</em>(1), e554. <a
+                    href="https://doi.org/10.1097/AS9.0000000000000554"
+                    target="_blank">https://doi.org/10.1097/AS9.0000000000000554</a></div>
+            <div id="bib-spohn2025" class="bib-entry">Spohn, R., &amp; Kiper, M. (2025). <em>State Prison Overcrowding
+                    and Capacity Data.</em> University of Nebraska Omaha. <a
+                    href="https://www.unomaha.edu/college-of-public-affairs-and-community-service/governing/stories/state-prison-overcrowding-and-capacity-data.php"
+                    target="_blank">https://www.unomaha.edu/...</a></div>
+            <div id="bib-strong2020" class="bib-entry">Strong, J. D., Reiter, K., Gonzalez, G., et al. (2020). The body
+                in isolation: The physical health impacts of incarceration in solitary confinement. <em>PLoS ONE,
+                    15</em>(10), e0238510. <a href="https://doi.org/10.1371/journal.pone.0238510"
+                    target="_blank">https://doi.org/10.1371/journal.pone.0238510</a></div>
+            <div id="bib-thompson2018" class="bib-entry">Thompson, et al. (2018). <em>Mental illness treatment in
+                    federal prisons.</em></div>
+            <div id="bib-wang2022" class="bib-entry">Wang, L. (2022, June). <em>Chronic Punishment: The unmet health
+                    needs of people in state prisons.</em> Prison Policy Initiative. <a
+                    href="https://www.prisonpolicy.org/reports/chronicpunishment.html"
+                    target="_blank">https://www.prisonpolicy.org/reports/chronicpunishment.html</a></div>
+            <div id="bib-watkins2021" class="bib-entry">Watkins, T. (2021). <em>Nearly a Fifth of State and Federal
+                    Prisons and a Tenth of Local Jails Had at Least One Suicide in 2019.</em></div>
+            <div id="bib-western2021" class="bib-entry">Western, B. (2021). Inside the Box: Safety, Health, and
+                Isolation in Prison. <em>Journal of Economic Perspectives, 35</em>(4), 97–122. <a
+                    href="https://doi.org/10.1257/jep.35.4.97" target="_blank">https://doi.org/10.1257/jep.35.4.97</a>
             </div>
-            <div class="bib-entry">Joseph-Marc, T. (2025, November 21). <em>FY 2025-26 Budget Summary: Corrections and
-                    Youth Justice.</em>
-                https://www.floridapolicy.org/posts/fy-2025-26-budget-summary-corrections-and-youth-justice</div>
-            <div class="bib-entry">Kaufman, A., Wolfkot, K. S., &amp; Seid, B. (2025, June 26). <em>Extreme Heat
-                    Exacerbates Dire Prison Conditions, With Few Paths to Relief.</em> State Court Report.
-                https://statecourtreport.org/our-work/analysis-opinion/extreme-heat-exacerbates-dire-prison-conditions-few-paths-relief
-            </div>
-            <div class="bib-entry">Lartey, J. (2025, December 13). <em>Why "Treatable" Is Often a Scary Word Behind
-                    Bars.</em> The Marshall Project.
-                https://www.themarshallproject.org/2025/12/13/health-care-deaths-prison-detention-center</div>
-            <div class="bib-entry">Lofstrom, M. (2024). <em>Court-ordered release and criminogenic outcomes.</em> Public
-                Policy Institute of California.</div>
-            <div class="bib-entry">Marcus, R., &amp; Canning, C. (2025, October 31). <em>He Died of Treatable Cancer in
-                    Prison. These Are His Last Words.</em> The Marshall Project.
-                https://www.themarshallproject.org/2025/10/31/cancer-in-prison-death-in-custody</div>
-            <div class="bib-entry">Nam-Sonenstein, B., &amp; Sawyer, W. (2025, August 25). <em>Youth Confinement: The
-                    Whole Pie 2025.</em> https://www.prisonpolicy.org/reports/youth2025.html</div>
-            <div class="bib-entry">Nilsson, A., et al. (2023). <em>Post-incarceration outcomes: Housing, employment, and
-                    mental health.</em></div>
-            <div class="bib-entry">Prison Policy Initiative. (2020, December 2). <em>No escape: The trauma of witnessing
-                    violence in prison.</em> https://www.prisonpolicy.org/blog/2020/12/02/witnessing-prison-violence/
-            </div>
-            <div class="bib-entry">Prison Policy Initiative. (2025). <em>Bad Behavior: How prison disciplinary policies
-                    manufacture misconduct.</em> https://www.prisonpolicy.org/reports/discipline.html</div>
-            <div class="bib-entry">Robbins, T. (2018, November 27). <em>How Prisons Fail the Mentally Ill.</em> The
-                Marshall Project. https://www.themarshallproject.org/2018/11/27/why-is-karl-taylor-dead</div>
-            <div class="bib-entry">Sawyer, W., Nam-Sonenstein, B., &amp; Wagner, P. (2026). <em>Mass Incarceration: The
-                    Whole Pie 2026.</em> https://www.prisonpolicy.org/reports/pie2026.html</div>
-            <div class="bib-entry">Shapiro, J. (2025, July 11). <em>Shackled For Days and Weeks: A Federal Report Finds
-                    Widespread Abuse in Prisons.</em> The Marshall Project.
-                https://www.themarshallproject.org/2025/07/11/report-justice-prison-abuse</div>
-            <div class="bib-entry">Solomon, A., &amp; Pear, B. (2025, May 27). <em>DOJ Funding Cuts: More Than 550
-                    Organizations Impacted, New Analysis Finds.</em> Council on Criminal Justice.
-                https://counciloncj.org/doj-funding-cuts-more-than-550-organizations-impacted-new-analysis-finds/</div>
-            <div class="bib-entry">Spence, L. E., Botterbush, K. S., Zhang, J. K., Berger, T. A., Mercier, P. A., &amp;
-                Mattei, T. A. (2025). Neglect, Recklessness, and Deliberate Indifference in the Face of a Serious
-                Neurosurgical Pathology: Lessons From the Tragic Fate of Prisoner Elliot Earl Williams. <em>Annals of
-                    Surgery Open, 6</em>(1), e554. https://doi.org/10.1097/AS9.0000000000000554</div>
-            <div class="bib-entry">Spohn, R., &amp; Kiper, M. (2025). <em>State Prison Overcrowding and Capacity
-                    Data.</em> University of Nebraska Omaha.
-                https://www.unomaha.edu/college-of-public-affairs-and-community-service/governing/stories/state-prison-overcrowding-and-capacity-data.php
-            </div>
-            <div class="bib-entry">Strong, J. D., Reiter, K., Gonzalez, G., et al. (2020). The body in isolation: The
-                physical health impacts of incarceration in solitary confinement. <em>PLoS ONE, 15</em>(10), e0238510.
-                https://doi.org/10.1371/journal.pone.0238510</div>
-            <div class="bib-entry">Thompson, et al. (2018). <em>Mental illness treatment in federal prisons.</em></div>
-            <div class="bib-entry">Wang, L. (2022, June). <em>Chronic Punishment: The unmet health needs of people in
-                    state prisons.</em> Prison Policy Initiative.
-                https://www.prisonpolicy.org/reports/chronicpunishment.html</div>
-            <div class="bib-entry">Watkins, T. (2021). <em>Nearly a Fifth of State and Federal Prisons and a Tenth of
-                    Local Jails Had at Least One Suicide in 2019.</em></div>
-            <div class="bib-entry">Western, B. (2021). Inside the Box: Safety, Health, and Isolation in Prison.
-                <em>Journal of Economic Perspectives, 35</em>(4), 97–122. https://doi.org/10.1257/jep.35.4.97
-            </div>
-            <div class="bib-entry">Wright, K. A., Young, J. T. N., Matekel, C. G., et al. (2023). Solitary confinement
-                and the well-being of people in prison. <em>Social Science &amp; Medicine, 335</em>, 116224.
-                https://doi.org/10.1016/j.socscimed.2023.116224</div>
+            <div id="bib-wright2023" class="bib-entry">Wright, K. A., Young, J. T. N., Matekel, C. G., et al. (2023).
+                Solitary confinement and the well-being of people in prison. <em>Social Science &amp; Medicine,
+                    335</em>, 116224. <a href="https://doi.org/10.1016/j.socscimed.2023.116224"
+                    target="_blank">https://doi.org/10.1016/j.socscimed.2023.116224</a></div>
         </div>
     </section>
 
@@ -1132,38 +1200,73 @@
             }
         });
 
-        // Figure 2: Mental Health Treatment Decline
+        // Figure 2: Mental Health Problems & Treatment in State Prisons (BJS Survey of Prison Inmates, 2016)
         new Chart(document.getElementById('mentalHealthChart'), {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: ['2013', '2014', '2015', '2016', '2017', '2018'],
+                labels: [
+                    'Has any recent or prior\nhistory of mental health problems',
+                    'Ever received a diagnosis\nof a mental disorder',
+                    'Has had serious psychological\ndistress in past 30 days',
+                    'Has received professional help\nfor mental health since admission',
+                    'Is currently receiving counseling\nor therapy from a professional'
+                ],
                 datasets: [{
-                    label: 'Prisoners Receiving Mental Health Treatment',
-                    data: [null, 7300, 6500, 5900, 5400, 4710],
-                    borderColor: ACCENT,
-                    backgroundColor: 'rgba(192,57,43,0.08)',
-                    borderWidth: 2.5,
-                    pointRadius: 4,
-                    pointBackgroundColor: ACCENT,
-                    fill: true,
-                    tension: 0.3
+                    label: 'Percentage of people in state prisons',
+                    data: [56, 43, 14, 26, 6],
+                    backgroundColor: ['#e6a817', '#e6a817', '#e6a817', ACCENT, ACCENT],
+                    borderWidth: 0,
+                    borderRadius: 2,
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
                     legend: { display: false },
-                    annotation: {},
-                    tooltip: { callbacks: { label: ctx => ctx.raw ? ctx.raw.toLocaleString() + ' prisoners' : 'N/A' } }
+                    tooltip: { callbacks: { label: ctx => ctx.raw + '% of people in state prisons' } }
                 },
                 scales: {
                     y: {
                         min: 0,
-                        max: 9000,
-                        ticks: { callback: v => v.toLocaleString() },
+                        max: 70,
+                        ticks: { callback: v => v + '%' },
                         grid: { color: '#eee' }
                     },
-                    x: { grid: { display: false } }
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 15,
+                            minRotation: 15,
+                            font: { size: 11 },
+                            callback: function (val, idx) {
+                                const labels = [
+                                    ['56%', 'Mental health', 'history'],
+                                    ['43%', 'Mental disorder', 'diagnosis'],
+                                    ['14%', 'Psychological', 'distress (30 days)'],
+                                    ['26%', 'Received', 'professional help'],
+                                    ['6%', 'Currently in', 'counseling/therapy']
+                                ];
+                                return labels[idx];
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    onComplete: function () {
+                        const chart = this;
+                        const ctx = chart.ctx;
+                        ctx.save();
+                        ctx.font = 'bold 13px DM Sans, sans-serif';
+                        ctx.fillStyle = '#fff';
+                        ctx.textAlign = 'center';
+                        chart.data.datasets[0].data.forEach((val, i) => {
+                            const meta = chart.getDatasetMeta(0);
+                            const bar = meta.data[i];
+                            ctx.fillText(val + '%', bar.x, bar.y + 18);
+                        });
+                        ctx.restore();
+                    }
                 }
             }
         });
