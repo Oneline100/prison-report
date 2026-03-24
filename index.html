@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trapped and Suffering: Prison System Report</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <style>
@@ -20,7 +21,7 @@
             --rule: #cccccc;
             --gray-bg: #f4f4f4;
             --font-serif: 'Playfair Display', Georgia, serif;
-            --font-sans: 'DM Sans', 'Helvetica Neue', sans-serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
             --intro-bg: #0d0b09;
         }
 
@@ -37,11 +38,13 @@
         }
 
         body {
-            font-family: var(--font-serif);
+            font-family: var(--font-sans);
             background: var(--bg);
             color: var(--text);
-            line-height: 1.85;
+            line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* INTRO */
@@ -215,6 +218,12 @@
             margin-bottom: 10px;
         }
 
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-serif);
+        }
+
         h2 {
             font-size: 2.2rem;
             font-weight: 900;
@@ -231,7 +240,7 @@
         p {
             font-size: 1.05rem;
             margin-bottom: 22px;
-            text-align: justify;
+            text-align: left;
         }
 
         blockquote {
@@ -405,6 +414,33 @@
             padding: 28px 0;
             margin: 50px 0;
             font-style: italic;
+        }
+
+        .pull-quote-source {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-style: normal;
+            color: var(--muted);
+            margin-top: 14px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .pull-quote.highlight {
+            background: #fdf2f1;
+            border-left: 6px solid var(--accent);
+            border-top: none;
+            border-bottom: none;
+            padding: 45px 50px;
+            margin: 70px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.05);
+        }
+
+        .pull-quote.highlight .pull-quote-source {
+            color: #7f8c8d;
+            margin-top: 20px;
         }
 
         /* BIBLIOGRAPHY */
@@ -673,8 +709,20 @@
                 when seeking legal help <a class="cite-link" href="#bib-ct2026">(CT Office of Correction Ombuds,
                     2026)</a>.</p>
 
-            <div class="pull-quote">"Prisons are turning from a place of rehabilitation and redemption to more of a
-                breeding ground for sickness, violence, and death."</div>
+
+            <div class="pull-quote">
+                “I wrote like 20 lawyers [regarding a medical grievance] but I never got a response back. I even wrote
+                ILAP — they basically told me that I’m not going to get much out of the situation, so I just left it
+                alone cause I could not find any help.”
+                <span class="pull-quote-source">— Incarcerated Individual at the MacDougall–Walker Correctional
+                    Institution, CT Office of Correction Ombuds <a class="cite-link"
+                        href="#bib-ct2026">(2026)</a></span>
+            </div>
+
+            <div class="pull-quote highlight">
+                Prisons are turning from a place of rehabilitation and redemption to more of a breeding ground for
+                sickness, violence, and death.
+            </div>
 
             <p>With unsuitable, dangerous conditions in prisons, combined with mass incarceration and now immigration
                 detentions, the consequences for prisoners continue to compound. The Department of Justice has already
@@ -693,12 +741,15 @@
         <section id="healthcare">
             <span class="chapter-label">03 · Healthcare</span>
             <h2>Healthcare</h2>
-            <p>Healthcare is designed to improve the "health and well-being of individuals and communities, including
-                preventive, diagnostic, therapeutic, rehabilitative, maintenance, monitoring, and counseling services."
-                However, this is not the case for incarcerated individuals in prison facilities. Many prisoners
-                requiring medical attention were often ignored and left to die after being glanced at — or only seen
-                when it was too late. The staff's ignorance or lack of care for the prisoners' health leads to
-                unnecessary suffering and can be seen as more inhumane than the death penalty itself.</p>
+            <p>Healthcare is designed to improve the “health and well-being of individuals and communities, including
+                preventive, diagnostic, therapeutic, rehabilitative, maintenance, monitoring, and counseling services.
+                ()” However, this is not the case for incarcerated individuals who lie in prison facilities. Many
+                prisoners requiring medical attention were often ignored and left to die after being glanced at by the
+                time it's too late. The staff’s ignorance or lack of care for the prisoners’ health leads to unnecessary
+                suffering and can be seen as more inhumane than the death penalty itself. In order for prisons to become
+                adequate at improving the health of prisoners are doctor-patient relationships, careful and more
+                intensive attention towards prisoners, better regulations to ensure prisoners’ comfort, and the needs of
+                those with conditions. </p>
 
             <p>In order for prisons to adequately improve the health of prisoners, improvements must be made to
                 doctor-patient relationships, care attention, regulations ensuring prisoners' comfort, and the needs of
@@ -713,6 +764,8 @@
                 facilities frequently fail to make adequate accommodations for individuals with special medical needs or
                 physical disabilities. This lack of precaution places vulnerable populations at heightened risk of
                 injury and deterioration.</p>
+
+
 
             <div class="case-box">
                 <span class="case-label">Case Study · Healthcare Failure</span>
@@ -764,9 +817,13 @@
         <section id="violence">
             <span class="chapter-label">04 · Violence &amp; Safety</span>
             <h2>Violence and Safety</h2>
-            <p>Within prisons, the welfare of incarcerated individuals is routinely compromised by endemic violence —
-                both from other inmates and from correctional staff. Overcrowded, understaffed facilities create
-                conditions in which violence is not an aberration but a predictable outcome.</p>
+            <p>Within prisons, the security of incarcerated individuals is threatened by many threats, stemming from
+                other inmates or staff. In the face of the criminal justice system, excessive force and inmate-on-inmate
+                violence are highly prominent within prisons. There have been many violence-related cases that expose
+                the correctional system’s failure to address the safety of inmates within prisons. Many prisons use a
+                standardized system of “control” in order to keep prisoners in check. Even these universal methods pose
+                both physical and psychological risks to the prisoners.
+            </p>
 
             <p>Alabama's prisons have been documented as the deadliest in the nation, with homicide rates far exceeding
                 national averages for correctional facilities <a class="cite-link" href="#bib-eji2018">(Equal Justice
@@ -790,13 +847,14 @@
                     accountability for their deaths.</p>
             </div>
 
-            <p>A 2025 federal report documented widespread abuse in federal prisons, including prisoners being shackled
-                for days and weeks at a time — a practice condemned as a form of torture under international human
-                rights standards <a class="cite-link" href="#bib-shapiro2025">(Shapiro, 2025)</a>. The <a
-                    class="cite-link" href="#bib-ppi2025">Prison Policy Initiative (2025)</a> has also documented how
-                prison
-                disciplinary policies themselves manufacture misconduct, creating cycles of punishment that escalate
-                rather than de-escalate violence.</p>
+            <p>Within the standardized systems of prisons, recent statistics show that many inmates are often bound or
+                chained to shackles in various methods, which often leads to obstructed blood flow if constantly held in
+                this type of containment (Prison Policy Initiative, 2020). There has even been a specific case where
+                this usage of confinement reflects the excessive force brought upon the correctional system by the
+                standardized system of prisons. A prisoner with multiple illnesses was exposed to physical trauma and
+                pepper-spray in the act of being shackled; they ultimately died after succumbing to physical injuries
+                alongside restricted blood flow due to their sickle cell disease (Shapiro, 2025).
+            </p>
 
             <div class="table-block">
                 <div class="table-title">Table 2</div>
@@ -870,6 +928,15 @@
                 </table>
             </div>
         </section>
+
+        <p>With increasingly sustained injuries and deaths every year, it suggests that the criminal justice system
+            currently still fails to prioritize the safety of the prisoners. Even with the changing nature of allocation
+            of
+            its funds to different departments and uses each year, very few improvements have been made toward safety
+            precautions for prisoners (Equal Justice Initiative 2018). This often contributes to the growing deaths or
+            incident reports each year for prisoners, showing how small modern prison systems have grown in terms of
+            physical welfare when compared to past cases and their history of incidents.</p>
+
 
         <hr class="section-rule">
 
@@ -1128,215 +1195,230 @@
         Chart.defaults.color = '#555';
 
         // Figure 1: Prison Population Donut
-        new Chart(document.getElementById('prisonPopChart'), {
-            type: 'bar',
-            data: {
-                labels: ['State Prisons', 'Local Jails', 'Federal Prisons & Jails', 'Immigration Detention', 'Youth Confinement', 'Involuntary Commitment', 'Territorial Prisons'],
-                datasets: [{
-                    label: 'People Confined',
-                    data: [1098000, 546000, 201000, 71000, 29000, 25000, 7000],
-                    backgroundColor: [ACCENT, '#2c3e50', '#7f8c8d', '#95a5a6', '#bdc3c7', '#d5d8dc', '#eaecee'],
-                    borderWidth: 0,
-                }]
-            },
-            options: {
-                responsive: true,
-                indexAxis: 'y',
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: ctx => ' ' + ctx.raw.toLocaleString() + ' people'
-                        }
-                    }
+        const initPrisonPopChart = () => {
+            new Chart(document.getElementById('prisonPopChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['State Prisons', 'Local Jails', 'Federal Prisons & Jails', 'Immigration Detention', 'Youth Confinement', 'Involuntary Commitment', 'Territorial Prisons'],
+                    datasets: [{
+                        label: 'People Confined',
+                        data: [1098000, 546000, 201000, 71000, 29000, 25000, 7000],
+                        backgroundColor: [ACCENT, '#2c3e50', '#7f8c8d', '#95a5a6', '#bdc3c7', '#d5d8dc', '#eaecee'],
+                        borderWidth: 0,
+                    }]
                 },
-                scales: {
-                    x: {
-                        ticks: {
-                            callback: v => (v / 1000000).toFixed(1) + 'M'
-                        },
-                        grid: { color: '#eee' }
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    animation: { duration: 1500, easing: 'easeOutQuart' },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { label: ctx => ' ' + ctx.raw.toLocaleString() + ' people' }
+                        }
                     },
-                    y: { grid: { display: false } }
+                    scales: {
+                        x: { ticks: { callback: v => (v / 1000000).toFixed(1) + 'M' }, grid: { color: '#eee' } },
+                        y: { grid: { display: false } }
+                    }
                 }
-            }
-        });
+            });
+        };
 
         // Figure 1b: Overcrowding by State
-        new Chart(document.getElementById('overcrowdingChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Iowa', 'Nebraska', 'Idaho', 'Colorado', 'Georgia', 'Washington', 'Montana', 'Wisconsin', 'Hawaii'],
-                datasets: [{
-                    label: 'Operational Capacity %',
-                    data: [119, 115.4, 110.1, 106.8, 105.4, 105.3, 102.6, 101.0, 100.7],
-                    backgroundColor: ctx => ctx.raw > 110 ? ACCENT : ctx.raw > 105 ? '#e74c3c' : '#c0392b88',
-                    borderWidth: 0,
-                }, {
-                    label: '100% Baseline',
-                    data: [100, 100, 100, 100, 100, 100, 100, 100, 100],
-                    type: 'line',
-                    borderColor: DARK,
-                    borderWidth: 1.5,
-                    borderDash: [5, 4],
-                    pointRadius: 0,
-                    fill: false,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
+        const initOvercrowdingChart = () => {
+            new Chart(document.getElementById('overcrowdingChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Iowa', 'Nebraska', 'Idaho', 'Colorado', 'Georgia', 'Washington', 'Montana', 'Wisconsin', 'Hawaii'],
+                    datasets: [{
+                        label: 'Operational Capacity %',
+                        data: [119, 115.4, 110.1, 106.8, 105.4, 105.3, 102.6, 101.0, 100.7],
+                        backgroundColor: ctx => ctx.raw > 110 ? ACCENT : ctx.raw > 105 ? '#e74c3c' : '#c0392b88',
+                        borderWidth: 0,
+                    }, {
+                        label: '100% Baseline',
+                        data: [100, 100, 100, 100, 100, 100, 100, 100, 100],
+                        type: 'line',
+                        borderColor: DARK,
+                        borderWidth: 1.5,
+                        borderDash: [5, 4],
+                        pointRadius: 0,
+                        fill: false,
+                    }]
                 },
-                scales: {
-                    y: {
-                        min: 95,
-                        ticks: { callback: v => v + '%' },
-                        grid: { color: '#eee' }
+                options: {
+                    responsive: true,
+                    animation: { duration: 1500, easing: 'easeOutQuart' },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
                     },
-                    x: { grid: { display: false } }
+                    scales: {
+                        y: { min: 95, ticks: { callback: v => v + '%' }, grid: { color: '#eee' } },
+                        x: { grid: { display: false } }
+                    }
                 }
-            }
-        });
+            });
+        };
 
-        // Figure 2: Mental Health Problems & Treatment in State Prisons (BJS Survey of Prison Inmates, 2016)
-        new Chart(document.getElementById('mentalHealthChart'), {
-            type: 'bar',
-            data: {
-                labels: [
-                    'Has any recent or prior\nhistory of mental health problems',
-                    'Ever received a diagnosis\nof a mental disorder',
-                    'Has had serious psychological\ndistress in past 30 days',
-                    'Has received professional help\nfor mental health since admission',
-                    'Is currently receiving counseling\nor therapy from a professional'
-                ],
-                datasets: [{
-                    label: 'Percentage of people in state prisons',
-                    data: [56, 43, 14, 26, 6],
-                    backgroundColor: ['#e6a817', '#e6a817', '#e6a817', ACCENT, ACCENT],
-                    borderWidth: 0,
-                    borderRadius: 2,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { callbacks: { label: ctx => ctx.raw + '% of people in state prisons' } }
+        // Figure 2: Mental Health Problems
+        const initMentalHealthChart = () => {
+            new Chart(document.getElementById('mentalHealthChart'), {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Has any recent or prior\nhistory of mental health problems',
+                        'Ever received a diagnosis\nof a mental disorder',
+                        'Has had serious psychological\ndistress in past 30 days',
+                        'Has received professional help\nfor mental health since admission',
+                        'Is currently receiving counseling\nor therapy from a professional'
+                    ],
+                    datasets: [{
+                        label: 'Percentage of people in state prisons',
+                        data: [56, 43, 14, 26, 6],
+                        backgroundColor: ['#e6a817', '#e6a817', '#e6a817', ACCENT, ACCENT],
+                        borderWidth: 0,
+                        borderRadius: 2,
+                    }]
                 },
-                scales: {
-                    y: {
-                        min: 0,
-                        max: 70,
-                        ticks: { callback: v => v + '%' },
-                        grid: { color: '#eee' }
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: ctx => ctx.raw + '% of people in state prisons' } }
                     },
-                    x: {
-                        grid: { display: false },
-                        ticks: {
-                            autoSkip: false,
-                            maxRotation: 15,
-                            minRotation: 15,
-                            font: { size: 11 },
-                            callback: function (val, idx) {
-                                const labels = [
-                                    ['56%', 'Mental health', 'history'],
-                                    ['43%', 'Mental disorder', 'diagnosis'],
-                                    ['14%', 'Psychological', 'distress (30 days)'],
-                                    ['26%', 'Received', 'professional help'],
-                                    ['6%', 'Currently in', 'counseling/therapy']
-                                ];
-                                return labels[idx];
+                    scales: {
+                        y: { min: 0, max: 70, ticks: { callback: v => v + '%' }, grid: { color: '#eee' } },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 15,
+                                minRotation: 15,
+                                font: { size: 11 },
+                                callback: function (val, idx) {
+                                    const labels = [
+                                        ['56%', 'Mental health', 'history'],
+                                        ['43%', 'Mental disorder', 'diagnosis'],
+                                        ['14%', 'Psychological', 'distress (30 days)'],
+                                        ['26%', 'Received', 'professional help'],
+                                        ['6%', 'Currently in', 'counseling/therapy']
+                                    ];
+                                    return labels[idx];
+                                }
                             }
                         }
-                    }
-                },
-                animation: {
-                    onComplete: function () {
-                        const chart = this;
-                        const ctx = chart.ctx;
-                        ctx.save();
-                        ctx.font = 'bold 13px DM Sans, sans-serif';
-                        ctx.fillStyle = '#fff';
-                        ctx.textAlign = 'center';
-                        chart.data.datasets[0].data.forEach((val, i) => {
-                            const meta = chart.getDatasetMeta(0);
-                            const bar = meta.data[i];
-                            ctx.fillText(val + '%', bar.x, bar.y + 18);
-                        });
-                        ctx.restore();
+                    },
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart',
+                        onComplete: function () {
+                            const chart = this;
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.font = 'bold 13px DM Sans, sans-serif';
+                            ctx.fillStyle = '#fff';
+                            ctx.textAlign = 'center';
+                            chart.data.datasets[0].data.forEach((val, i) => {
+                                const meta = chart.getDatasetMeta(0);
+                                const bar = meta.data[i];
+                                ctx.fillText(val + '%', bar.x, bar.y + 18);
+                            });
+                            ctx.restore();
+                        }
                     }
                 }
-            }
-        });
+            });
+        };
 
-        // Figure 3: Recidivism by Age
-        new Chart(document.getElementById('recidivismChart'), {
-            type: 'line',
-            data: {
-                labels: ['2013', '2014', '2015', '2016', '2017'],
-                datasets: [
-                    {
-                        label: '17 or younger',
-                        data: [37, 55, 65, 73, 80],
-                        borderColor: ACCENT,
-                        backgroundColor: 'transparent',
-                        borderWidth: 2.5,
-                        pointRadius: 4,
-                        pointBackgroundColor: ACCENT,
-                        tension: 0.3
-                    },
-                    {
-                        label: '18–29',
-                        data: [30, 46, 56, 63, 70],
-                        borderColor: '#2c3e50',
-                        backgroundColor: 'transparent',
-                        borderWidth: 2.5,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#2c3e50',
-                        tension: 0.3
-                    },
-                    {
-                        label: '30–39',
-                        data: [20, 30, 37, 43, 49],
-                        borderColor: '#7f8c8d',
-                        backgroundColor: 'transparent',
-                        borderWidth: 2,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#7f8c8d',
-                        tension: 0.3
-                    },
-                    {
-                        label: '40 or older',
-                        data: [12, 18, 22, 26, 30],
-                        borderColor: '#bdc3c7',
-                        backgroundColor: 'transparent',
-                        borderWidth: 2,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#bdc3c7',
-                        tension: 0.3
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { font: { size: 12 }, padding: 16 }
-                    },
-                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
+        // Figure 3: Recidivism Chart
+        const initRecidivismChart = () => {
+            new Chart(document.getElementById('recidivismChart'), {
+                type: 'line',
+                data: {
+                    labels: ['2013', '2014', '2015', '2016', '2017'],
+                    datasets: [
+                        {
+                            label: '17 or younger',
+                            data: [37, 55, 65, 73, 80],
+                            borderColor: ACCENT,
+                            backgroundColor: 'transparent',
+                            borderWidth: 2.5,
+                            pointRadius: 4,
+                            pointBackgroundColor: ACCENT,
+                            tension: 0.3
+                        },
+                        {
+                            label: '18–29',
+                            data: [30, 46, 56, 63, 70],
+                            borderColor: '#2c3e50',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2.5,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#2c3e50',
+                            tension: 0.3
+                        },
+                        {
+                            label: '30–39',
+                            data: [20, 30, 37, 43, 49],
+                            borderColor: '#7f8c8d',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#7f8c8d',
+                            tension: 0.3
+                        },
+                        {
+                            label: '40 or older',
+                            data: [12, 18, 22, 26, 30],
+                            borderColor: '#bdc3c7',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#bdc3c7',
+                            tension: 0.3
+                        }
+                    ]
                 },
-                scales: {
-                    y: {
-                        min: 0,
-                        max: 85,
-                        ticks: { callback: v => v + '%' },
-                        grid: { color: '#eee' }
+                options: {
+                    responsive: true,
+                    animation: { duration: 2000, easing: 'easeOutQuart' },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 16 } },
+                        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
                     },
-                    x: { grid: { display: false } }
+                    scales: {
+                        y: { min: 0, max: 85, ticks: { callback: v => v + '%' }, grid: { color: '#eee' } },
+                        x: { grid: { display: false } }
+                    }
                 }
+            });
+        };
+
+        // Trigger animations when charts scroll into view
+        const initializers = {
+            'prisonPopChart': initPrisonPopChart,
+            'overcrowdingChart': initOvercrowdingChart,
+            'mentalHealthChart': initMentalHealthChart,
+            'recidivismChart': initRecidivismChart
+        };
+
+        const chartObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const canvasId = entry.target.id;
+                    if (initializers[canvasId]) {
+                        initializers[canvasId](); // Render and animate
+                        observer.unobserve(entry.target); // Stop observing
+                    }
+                }
+            });
+        }, { threshold: 0.25 });
+
+        document.querySelectorAll('canvas').forEach(canvas => {
+            if (canvas.id && initializers[canvas.id]) {
+                chartObserver.observe(canvas);
             }
         });
     </script>
