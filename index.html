@@ -495,6 +495,64 @@
         .bib-entry {
             scroll-margin-top: 80px;
         }
+
+        /* CONTENT WARNING / CENSOR OVERLAY */
+        .censored-wrapper {
+            position: relative;
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .censored-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid var(--rule);
+            display: block;
+            transition: filter 0.4s ease;
+            filter: blur(18px) brightness(0.4);
+        }
+
+        .censored-wrapper.revealed img {
+            filter: none;
+        }
+
+        .censor-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .censored-wrapper.revealed .censor-overlay {
+            opacity: 0;
+        }
+
+        .censor-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .censor-label {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .censor-sub {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+        }
     </style>
 </head>
 
@@ -924,6 +982,23 @@
                     href="#bib-shapiro2025">(Shapiro, 2025)</a>.
             </p>
 
+            <div class="chart-block" style="margin: 40px 0;">
+                <div class="chart-title">Figure 3</div>
+                <div class="chart-caption">Four-Point Restraint — Shackling Practices in U.S. Prisons</div>
+                <div class="censored-wrapper" id="fig3-censor" onclick="this.classList.add('revealed')" title="Click to reveal image">
+                    <img src="scr/THOMSON-4-point--052022.webp" alt="Four-Point Restraint Shackling">
+                    <div class="censor-overlay">
+                        <div class="censor-icon">⚠️</div>
+                        <div class="censor-label">Disturbing Image</div>
+                        <div class="censor-sub">Click to reveal</div>
+                    </div>
+                </div>
+                <p class="chart-source">Source: Shapiro, J. (2025, July 11). Shackled for days and weeks: A federal
+                    report finds widespread abuse in prisons. <em>The Marshall Project</em>. <a
+                        href="https://www.themarshallproject.org/2025/07/11/report-justice-prison-abuse" target="_blank"
+                        style="color:inherit; text-decoration:underline;">Link</a></p>
+            </div>
+
             <p>Despite safeguards for juveniles in prisons, these safeguards fail to ensure their safety. Even in the
                 case of a juvenile, Trina Garnett, she was sexually assaulted by a prison guard, which adds to the
                 prominent issue of young prisoners being five times more likely to be sexually assaulted <a
@@ -1065,7 +1140,7 @@
 
             <!-- Figure 2: Mental Health Problems & Treatment in State Prisons -->
             <div class="chart-block">
-                <div class="chart-title">Figure 3</div>
+                <div class="chart-title">Figure 4</div>
                 <div class="chart-caption">Over half of people in state prisons report mental health problems, but only
                     1 in 4 has received professional help in prison — percentage of people in state prisons nationwide
                     who have indicated a recent or past mental health problem, compared to the percentage who have
@@ -1117,7 +1192,7 @@
 
             <!-- Recidivism Chart (Figure 3) -->
             <div class="chart-block">
-                <div class="chart-title">Figure 4</div>
+                <div class="chart-title">Figure 5</div>
                 <div class="chart-caption">Recidivism Rates Decreased with Age of First Arrest — Percent of prisoners
                     re-arrested within 5 years of release, by age of first arrest</div>
                 <canvas id="recidivismChart" height="200"></canvas>
@@ -1287,7 +1362,8 @@
 
             <div id="bib-apa2023" class="bib-entry">American Psychological Association. (2023). Health care.
                 <em>APA.org</em>. <a href="https://www.apa.org/topics/health-care"
-                    target="_blank">https://www.apa.org/topics/health-care</a></div>
+                    target="_blank">https://www.apa.org/topics/health-care</a>
+            </div>
 
             <div id="bib-mast2025" class="bib-entry">Mast, N. (2025). Forced prison labor in the "land of the free":
                 Rooted in racism and economic exploitation: Spotlight. Economic Policy Institute. <a
