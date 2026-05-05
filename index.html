@@ -138,24 +138,18 @@
             }
         }
 
-        /* Lock icon */
-        .icon-wrap {
+        /* Logo */
+        .logo-wrap {
             margin: 0 auto 1.75rem;
-            width: 72px;
-            height: 72px;
-            border-radius: 20px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             animation: fadeUp 0.8s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
-        .icon-wrap svg {
-            width: 34px;
-            height: 34px;
-            color: var(--accent);
+        .logo-wrap img {
+            height: 72px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
         }
 
         h1 {
@@ -297,13 +291,8 @@
             Service Unavailable
         </div>
 
-        <div class="icon-wrap">
-            <!-- padlock SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
+        <div class="logo-wrap">
+            <img src="scr/racing.png" alt="Site logo" />
         </div>
 
         <h1>This site has been<br />shut down.</h1>
@@ -337,13 +326,6 @@
         <p class="footer">
             If you believe you reached this page in error, please contact the site owner.
         </p>
-
-        <div class="preview">
-            <div class="preview-label">Last known state</div>
-            <div class="preview-img-wrap">
-                <img src="scr/racing.png" alt="Screenshot of the report before shutdown" />
-            </div>
-        </div>
 
     </div>
 </body>
